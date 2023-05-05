@@ -1,0 +1,17 @@
+{
+    "name": "user/testproject",
+    "description": "test project",
+    "autoload": {
+        "psr-4": {
+            "User\\Testproject\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Kirushcheva AA"
+        }
+    ],
+    "require": {
+        "ext-mysqli": "*"
+    }
+}
