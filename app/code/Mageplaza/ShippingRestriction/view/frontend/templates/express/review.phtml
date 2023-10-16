@@ -1,0 +1,40 @@
+
+<script type="text/javascript">
+    //<![CDATA[
+    require([
+        'jquery',
+        'mage/url',
+        'mage/cookies'
+    ], function ($, urlBuilder) {
+        "use strict";
+
+
+        $(window).load(function(){
+            var shippingMethods = $('#shipping-method');
+
+            // setTimeout(function(){
+                if(!shippingMethods.val()) {
+                    var option = $('#shipping-method optgroup option').first(),
+                    	resultId = $('#details-reload');
+
+                    shippingMethods.val(option.val()).trigger('change');
+                	var formData = $('#shipping-method-form').serialize() + '&isAjax=true';
+
+                    console.log('Mageplaza');
+
+                    $.ajax({
+                    	url: $('#shipping-method-form').attr('action'),
+                    	type: 'post',
+                    	data: formData
+                    }).success(function(res){
+                    	resultId.html(res);
+                    });
+                }
+            // }, 1500);
+
+        });
+
+
+    });
+    //]]>
+</script>

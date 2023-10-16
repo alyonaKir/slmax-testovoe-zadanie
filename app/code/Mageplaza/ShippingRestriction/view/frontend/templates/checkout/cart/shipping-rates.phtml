@@ -1,0 +1,33 @@
+<script type="text/javascript">
+    require([
+    	'jquery',
+    	'Magento_Checkout/js/model/quote',
+    	'Magento_Checkout/js/model/shipping-service'
+	], function (
+		$,
+		quote,
+		shippingService)
+	{
+
+        $(window).load(function(){
+        	setTimeout(function(){ 
+        		console.log('mageplaza_shippingrestriction');
+        		var shippingRate = shippingService.getShippingRates();
+        		if (quote.shippingMethod()) {
+                    let quoteShippingMethod = quote.shippingMethod()
+                      , isApply = false;
+                    $.each(shippingRate(), function(key, shippingMethod) {
+                        if (quoteShippingMethod.method_code == shippingMethod.method_code) {
+                            isApply = true;
+                        }
+                    });
+                    if (!isApply) {
+                        quote.shippingMethod(null);
+                    }
+                } else {
+                    quote.shippingMethod(null);
+                }
+        	}, 3300);
+        });
+    });
+</script>

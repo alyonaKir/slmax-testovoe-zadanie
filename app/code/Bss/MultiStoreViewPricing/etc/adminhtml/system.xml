@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BSS Commerce Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://bsscommerce.com/Bss-Commerce-License.txt
+ *
+ * @category   BSS
+ * @package    Bss_MultiStoreViewPricing
+ * @author     Extension Team
+ * @copyright  Copyright (c) 2017-2018 BSS Commerce Co. ( http://bsscommerce.com )
+ * @license    http://bsscommerce.com/Bss-Commerce-License.txt
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+    	<tab id="bss" translate="label" sortOrder="300">
+            <label>Bss Commerce</label>
+        </tab>
+        <section id="multistoreviewpricing" translate="label" type="text" sortOrder="140" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Multiple Store View Pricing</label>
+            <tab>bss</tab>
+            <resource>Bss_MultiStoreViewPricing::config_price</resource>
+            <group id="general" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General Options</label>
+                <field id="tier_price" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Choose Tier Price Option</label>
+                    <backend_model>Bss\MultiStoreViewPricing\Model\Indexer\Product\TierPrice\System\Config\Option</backend_model>
+                    <source_model>Bss\MultiStoreViewPricingTierPrice\Model\Config\Source\TierConfig</source_model>
+                </field>
+            </group>
+        </section>
+        <section id="currency">
+            <group id="options" translate="label" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                <field id="base" translate="label comment" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                </field>
+            </group>
+        </section>
+        <section id="sales">
+            <group id="minimum_order">
+                <field id="active" showInDefault="1" showInWebsite="1" showInStore="1"/>
+                <field id="amount" showInDefault="1" showInWebsite="1" showInStore="1"/>
+                <field id="tax_including" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1"/>
+                <field id="multi_address" showInDefault="1" showInWebsite="1" showInStore="1"/>
+            </group>
+        </section>
+        <section id="carriers">
+            <group id="flatrate">
+                <field id="type" translate="label" type="select" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1"/>
+                <field id="price" translate="label" type="text" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1"/>
+                <field id="handling_type" translate="label" type="select" sortOrder="7" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1"/>
+                <field id="handling_fee" translate="label" type="text" sortOrder="8" showInDefault="1" showInWebsite="1" showInStore="1"/>
+            </group>
+            <group id="tablerate">
+                <field id="handling_type" translate="label" type="select" sortOrder="7" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1"/>
+                <field id="handling_fee" translate="label" type="text" sortOrder="8" showInDefault="1" showInWebsite="1" showInStore="1"/>
+                <field id="condition_name" translate="label" type="select" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1"/>
+                <field id="include_virtual_price" translate="label" type="select" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="1"/>
+                <field id="export" translate="label" type="Magento\OfflineShipping\Block\Adminhtml\Form\Field\Export" sortOrder="5" showInDefault="0" showInWebsite="0" showInStore="1"/>
+                <field id="import" translate="label" type="Magento\OfflineShipping\Block\Adminhtml\Form\Field\Import" sortOrder="6" showInDefault="0" showInWebsite="0" showInStore="1"/>
+            </group>
+            <group id="freeshipping">
+                <field id="free_shipping_subtotal" translate="label" type="text" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1"/>
+            </group>
+        </section>
+    </system>
+</config>

@@ -1,0 +1,95 @@
+<?php
+/**
+ * BSS Commerce Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://bsscommerce.com/Bss-Commerce-License.txt
+ *
+ * @category   BSS
+ * @package    Bss_MetaTagManager
+ * @author     Extension Team
+ * @copyright  Copyright (c) 2018-2019 BSS Commerce Co. ( http://bsscommerce.com )
+ * @license    http://bsscommerce.com/Bss-Commerce-License.txt
+ */
+?>
+<?php
+/* @var $block \Bss\MetaTagManager\Block\Adminhtml\Metatemplate\Edit\Variables */
+?>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Bss_MetaTagManager/js/process_field": {
+            }
+        }
+    }
+</script>
+
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Bss_MetaTagManager/js/insert_variables": {
+            }
+        }
+    }
+</script>
+
+<div id="bss-overlay" class="bss-overlay"></div>
+
+<div id="bss-variables-container" class="bss-variables-container">
+    <div class="bss-variables-block">
+        <div id="bss-close" class="ic ic-close"></div>
+        <h4 class="variables-container-title"><?php echo __('Insert Variables') ?></h4>
+        <div class="bss-modal-insert-button">
+            <button type="button" class="bss-insert-checked-variables"><?php echo __('Insert') ?></button>
+        </div>
+        <br>
+    <?php
+
+    if ($block->getProductVariables()) : ?>
+            <div class="variable-group product-group">
+                <h5 class="variable-group-title"><?php echo __('Product Attributes') ?></h5><?php
+                foreach ($block->getProductVariables() as $key => $value) :?>
+                        <a href="#"
+                           data-insert="[<?php echo $key ?>]"
+                           class="variable variable-<?php echo $key ?>"><?php echo $value ?>
+                        </a>
+                        <input type="checkbox" name="attibute-value" value="[<?=$key?>]"/><br>
+                    <?php
+                endforeach; ?>
+            </div>
+        <?php
+    endif; ?>
+
+    <?php if ($block->getCategoryVariables()) : ?>
+            <div class="variable-group category-group">
+                <h5 class="variable-group-title"><?php echo __('Category Attributes') ?></h5>
+        <?php
+        foreach ($block->getCategoryVariables() as $key => $value) : ?>
+                    <a href="#" data-insert="[<?php echo $key ?>]"
+                       class="variable variable-<?php echo $key ?>"><?php echo $value ?></a>
+            <input type="checkbox" name="attibute-value" value="[<?=$key?>]"/><br>
+            <?php
+        endforeach ?>
+            </div>
+        <?php
+    endif; ?>
+        <?php
+        if ($block->getStoreVariables()) : ?>
+            <div class="variable-group stores-group">
+                <h5 class="variable-group-title"><?php echo __('Store Attributes') ?></h5>
+            <?php
+            foreach ($block->getStoreVariables() as $key => $value) : ?>
+                    <a href="#" data-insert="[<?php echo $key ?>]"
+                       class="variable variable-<?php echo $key ?>"><?php echo $value ?></a>
+            <input type="checkbox" name="attibute-value" value="[<?=$key?>]"/><br>
+                <?php
+            endforeach ?>
+            </div>
+            <?php
+        endif; ?>
+    </div>
+</div>

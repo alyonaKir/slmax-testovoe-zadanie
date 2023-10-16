@@ -1,0 +1,76 @@
+<?php
+/**
+ * BSS Commerce Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://bsscommerce.com/Bss-Commerce-License.txt
+ *
+ * @category   BSS
+ * @package    Bss_CanonicalTag
+ * @author     Extension Team
+ * @copyright  Copyright (c) 2018-2019 BSS Commerce Co. ( http://bsscommerce.com )
+ * @license    http://bsscommerce.com/Bss-Commerce-License.txt
+ */
+?>
+<?php
+/**
+ * Canonical Tag
+ * @var $block Bss\CanonicalTag\Block\CanonicalTag
+ */
+?>
+<?php
+//Get Url Other for Homepage
+$urlRewrite = null;
+$helper = $block->getDataHelper();
+$urlValue = $helper->getUrlHomepage($block->getStoreId());
+
+$statusCanonicalTag = $helper->isCanonicalEnable($block->getStoreId());
+$isUseLayeredNavigation = $helper->isEnableLayeredNavigation($block->getStoreId());
+//Get Url Current
+$currentUrl = $block->getBaseUrl();
+
+$canonicalTagUrl = '';
+$isShowCanonical = false;
+//Get Url CMS in Database
+if ($block->isCategory('cms')) {
+    $cmsPage = $block->getCurrentCms();
+    if ($cmsPage->getData('custom_attribute') == null || $cmsPage->getData('custom_attribute') == '') {
+        $identifier = $cmsPage->getData('identifier');
+        $pageUrl = $currentUrl . $identifier . '/';
+    } else {
+        $pageUrl = $cmsPage->getData('custom_attribute');
+    }
+    $canonicalTagUrl = $pageUrl;
+    $isShowCanonical = true;
+}
+//Get url In Category saved Database
+if ($block->isCategory('catalog_category_view')) {
+    $currentCategory = $block->getCurrentCategory();
+    $category = $block->getCurrentCategory();
+    $urlRewrite = $category->getData('custom_attribute');
+    if ($urlRewrite !== null && $urlRewrite !== '' && $urlRewrite) {
+        $canonicalTagUrl = $urlRewrite;
+    } elseif ($isUseLayeredNavigation) {
+        $canonicalTagUrl = $currentCategory->getUrl();
+    } else {
+        $canonicalTagUrl = $block->getUrl('*/*/*', ['_current' => true, '_use_rewrite' => true]);
+    }
+    $isShowCanonical = true;
+}
+
+if ($block->isCategory('cms_index_index')) {
+    if ($urlValue === '' || $urlValue === null) {
+        $canonicalTagUrl = $currentUrl;
+    } else {
+        $canonicalTagUrl = $urlValue;
+    }
+    $isShowCanonical = true;
+}
+?>
+<?php if ($statusCanonicalTag && $isShowCanonical) : ?>
+    <link rel="canonical" href="<?php echo $canonicalTagUrl; ?>">
+<?php endif;

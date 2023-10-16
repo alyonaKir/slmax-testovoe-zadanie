@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_ShippingRestriction
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!--Grid collection-->
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="mageplaza_shippingrestriction_rule_listing_data_source" xsi:type="string">Mageplaza\ShippingRestriction\Model\ResourceModel\Rule\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Quote\Model\Quote\Address">
+        <plugin name="shippingrestriction-quote-address" type="Mageplaza\ShippingRestriction\Plugin\Model\Quote\Address" sortOrder="20"/>
+    </type>
+    <type name="Magento\Quote\Model\ShippingMethodManagement">
+        <plugin name="shippingrestriction-shippingmethod-cart" type="Mageplaza\ShippingRestriction\Plugin\Model\ShippingMethodManagement" sortOrder="20"/>
+    </type>
+    <type name="Magento\Checkout\Model\TotalsInformationManagement">
+        <plugin name="shippingrestriction-shippingmethod-cart-total" type="Mageplaza\ShippingRestriction\Plugin\Model\TotalsInformationManagement" sortOrder="20"/>
+    </type>
+    <type name="Magento\Checkout\Model\ShippingInformationManagement">
+        <plugin name="shippingrestriction-shippingmethod-payment" type="Mageplaza\ShippingRestriction\Plugin\Model\ShippingInformationManagement" sortOrder="20"/>
+    </type>
+    <type name="Magento\Checkout\Model\PaymentInformationManagement">
+        <plugin name="shippingrestriction-shippingmethod-placeorder" type="Mageplaza\ShippingRestriction\Plugin\Model\PaymentInformationManagement" sortOrder="20"/>
+    </type>
+    <type name="Magento\Checkout\Model\GuestPaymentInformationManagement">
+        <plugin name="shippingrestriction-shippingmethod-guest-placeorder" type="Mageplaza\ShippingRestriction\Plugin\Model\GuestPaymentInformationManagement" sortOrder="20"/>
+    </type>
+    <type name="Mageplaza\Osc\Model\CheckoutManagement">
+        <plugin name="osc-shippingrestriction-checkoutmanagement" type="Mageplaza\ShippingRestriction\Plugin\Model\CheckoutManagement" sortOrder="20"/>
+    </type>
+    <type name="Mageplaza\ShippingCost\Controller\Index\Calculate">
+        <plugin name="mpshippingrestriction-compatible-shippingcost" type="Mageplaza\ShippingRestriction\Plugin\Controller\ShippingCost\Calculate"/>
+    </type>
+</config>

@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BSS Commerce Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://bsscommerce.com/Bss-Commerce-License.txt
+ *
+ * =================================================================
+ *                 MAGENTO EDITION USAGE NOTICE
+ * =================================================================
+ * This package designed for Magento COMMUNITY edition
+ * BSS Commerce does not guarantee correct work of this extension
+ * on any other Magento edition except Magento COMMUNITY edition.
+ * BSS Commerce does not provide extension support in case of
+ * incorrect edition usage.
+ * =================================================================
+ *
+ * @category   BSS
+ * @package    Bss_RichSnippets
+ * @author     Extension Team
+ * @copyright  Copyright (c) 2015-2016 BSS Commerce Co. ( http://bsscommerce.com )
+ * @license    http://bsscommerce.com/Bss-Commerce-License.txt
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <bss_richsnippets>
+            <site_structure>
+                <enable_site_name>0</enable_site_name>
+                <search_box>0</search_box>
+                <breadscumbs>1</breadscumbs>
+            </site_structure>
+            <local_business>
+                <enable>0</enable>
+            </local_business>
+            <product>
+                <sku>1</sku>
+                <name>1</name>
+                <image>1</image>
+                <description>1</description>
+                <review>1</review>
+                <rating>1</rating>
+                <price>1</price>
+                <availability>1</availability>
+            </product>
+            <category>
+                <description>1</description>
+                <name>1</name>
+                <image>1</image>
+            </category>
+            <open_graph>
+                <for_product>1</for_product>
+                <for_category>1</for_category>
+                <for_website>1</for_website>
+            </open_graph>
+            <twitter_card>
+                <for_product>1</for_product>
+                <for_category>1</for_category>
+                <for_website>1</for_website>
+            </twitter_card>
+        </bss_richsnippets>
+    </default>
+</config>

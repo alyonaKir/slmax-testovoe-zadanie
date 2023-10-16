@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BSS Commerce Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://bsscommerce.com/Bss-Commerce-License.txt
+ *
+ * @category   BSS
+ * @package    Bss_MultiStoreViewPricingPriceIndexer
+ * @author     Extension Team
+ * @copyright  Copyright (c) 2017-2018 BSS Commerce Co. ( http://bsscommerce.com )
+ * @license    http://bsscommerce.com/Bss-Commerce-License.txt
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Magento\Catalog\Model\ResourceModel\Product\Indexer\Price\DefaultPrice" type="Bss\MultiStoreViewPricingPriceIndexer\Model\ResourceModel\Product\Indexer\Price\DefaultPrice" />
+
+    <preference for="Magento\GroupedProduct\Model\ResourceModel\Product\Indexer\Price\Grouped" type="Bss\MultiStoreViewPricingPriceIndexer\Model\ResourceModel\Product\Indexer\Price\Grouped" />
+
+    <preference for="Magento\ConfigurableProduct\Model\ResourceModel\Product\Indexer\Price\Configurable" type="Bss\MultiStoreViewPricingPriceIndexer\Model\ResourceModel\Product\Indexer\Price\Configurable" />
+
+    <preference for="Magento\Bundle\Model\ResourceModel\Indexer\Price" type="Bss\MultiStoreViewPricingPriceIndexer\Model\ResourceModel\Product\Indexer\Price\Bundle" />
+
+    <preference for="Magento\Downloadable\Model\ResourceModel\Indexer\Price" type="Bss\MultiStoreViewPricingPriceIndexer\Model\ResourceModel\Product\Indexer\Price\Downloadable" />
+
+    <preference for="Magento\Catalog\Model\Indexer\Product\Price" type="Bss\MultiStoreViewPricingPriceIndexer\Model\Indexer\Product\Price" />
+
+    <preference for="Magento\Catalog\Model\Indexer\Product\Price\TableMaintainer" type="Bss\MultiStoreViewPricingPriceIndexer\Model\Indexer\Product\Price\TableMaintainer" />
+
+    <preference for="Magento\Catalog\Model\ResourceModel\Product\Indexer\Price\Query\BaseFinalPrice" type="Bss\MultiStoreViewPricingPriceIndexer\Model\ResourceModel\Product\Indexer\Price\Query\BaseFinalPrice" />
+
+    <preference for="Magento\Catalog\Model\ResourceModel\Product\Indexer\Price\TierPrice"
+                type="Bss\MultiStoreViewPricingPriceIndexer\Model\ResourceModel\Product\Indexer\Price\TierPrice" />
+
+    <type name="Magento\Catalog\Model\Indexer\Product\Price\PriceTableResolver">
+        <plugin name="Bss_MultiStoreViewPricingPriceIndexer::Product_Indexer_Price_PriceTableResolver"
+                type="Bss\MultiStoreViewPricingPriceIndexer\Plugin\Product\Price\PriceTableResolver"
+                sortOrder="10" />
+    </type>
+
+    <type name="Magento\Catalog\Model\ResourceModel\Product\Indexer\LinkedProductSelectBuilderByIndexPrice">
+        <plugin name="Bss_MultiStoreViewPricingPriceIndexer::Product_Indexer_LinkedProductSelectBuilderByIndexPrice"
+                type="Bss\MultiStoreViewPricingPriceIndexer\Plugin\Product\Indexer\LinkedProductSelectBuilderByIndexPrice"
+                sortOrder="10" />
+    </type>
+</config>

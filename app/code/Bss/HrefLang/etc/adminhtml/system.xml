@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BSS Commerce Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://bsscommerce.com/Bss-Commerce-License.txt
+ *
+ * @category   BSS
+ * @package    Bss_HrefLang
+ * @author     Extension Team
+ * @copyright  Copyright (c) 2018-2019 BSS Commerce Co. ( http://bsscommerce.com )
+ * @license    http://bsscommerce.com/Bss-Commerce-License.txt
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="bss_seo_suite" translate="label" sortOrder="300">
+            <label><![CDATA[Bss Commerce]]></label> 
+        </tab>
+        <section id="bss_hreflang" translate="label" type="text" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>HREFLANG Tag Support</label>
+            <tab>bss_seo_suite</tab>
+            <resource>Bss_HrefLang::hreflang</resource>
+            <group id="hreflang" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>HREFLANG Tag Support</label>
+                <field id="active" translate="label" type="select" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enabled</label>
+                    <comment><![CDATA[Version 1.0.5]]></comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="store" translate="label" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Add HREFLANG for Store View</label>
+                    <frontend_model>Bss\HrefLang\Block\System\Form\Field\Regex</frontend_model>
+                    <backend_model>Bss\HrefLang\Model\Config\Backend\Hreflang</backend_model>
+                    <depends>
+                        <field id="*/*/active">1</field>
+                    </depends>
+                    <comment><![CDATA[Please choose Language and Country for each store view<br/>If you choose Language as Global, you must select Not Assign for the Country section.]]></comment>
+                </field>
+                <field id="enable_homepage" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" >
+                    <label>Enable for Homepage</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="*/*/active">1</field>
+                    </depends>
+                </field>
+                <field id="enable_category" translate="label" type="select" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1" >
+                    <label>Enable for Category Page</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="*/*/active">1</field>
+                    </depends>
+                </field>
+                <field id="enable_product" translate="label" type="select" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1" >
+                    <label>Enable for Product Page</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="*/*/active">1</field>
+                    </depends>
+                </field>
+                <field id="enable_cms" translate="label" type="select" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1" >
+                    <label>Enable for CMS Page</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="*/*/active">1</field>
+                    </depends>
+                </field>
+            </group>
+            <group id="recommended_solutions" translate="label" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label><![CDATA[<a href="https://bsscommerce.com/magento-2-seo-extension.html" target="_blank" style="background: #f0f0f0; padding: 20px; border-radius: 4px">
+                    <p style="font-size: 14px;">Want a complete SEO solution? We also offer a <font color="blue">SEO Suite</font>,
+                    including all necessary modules to make your site SEO-friendly, boost ranking and increase traffic!</p></a>]]>
+                </label>
+                <fieldset_css>paypal-recommended-header bss_footer_seo</fieldset_css>
+                <frontend_model>Magento\Paypal\Block\Adminhtml\System\Config\Fieldset\Expanded</frontend_model>
+            </group>
+        </section>
+    </system>
+</config>

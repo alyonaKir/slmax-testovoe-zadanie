@@ -1,0 +1,161 @@
+& when (@media-common = true) {
+    #bss_seo_toolbar {
+        display: none;
+        width: 500px;
+        height: auto;
+        position: fixed;
+        bottom: 15px;
+        right: 15px;
+        z-index: 100000000;
+        background: #fff;
+        border-radius: 10px;
+        -webkit-box-shadow: 0 7px 8px -4px rgba(0,0,0,.2), 0 13px 19px 2px rgba(0,0,0,.14), 0 5px 24px 4px rgba(0,0,0,.12);
+        box-shadow: 0 7px 8px -4px rgba(0,0,0,.2), 0 13px 19px 2px rgba(0,0,0,.14), 0 5px 24px 4px rgba(0,0,0,.12);
+        @media only screen and (max-width: @screen__m) {
+            width: ~"calc(100% - 30px)";
+        }
+        &.toolbar_hide {
+            width: 260px;
+            padding: 0;
+            opacity: 0.6;
+            .bss_toolbar_header {
+                height: 20px;
+                border-radius: 10px;
+                img {
+                    margin: -7px 0 0 0;
+                }
+                svg {
+                    transform: rotate(180deg);
+                    margin: 2px 0 0 0;
+                }
+                p {
+                    float: left;
+                    font-weight: 900;
+                    font-size: 14px;
+                    margin: 1px 0 0 0;
+                }
+            }
+        }
+        .bss_toolbar_header {
+            width: ~"calc(100% - 30px)";
+            padding: 15px;
+            float: left;
+            background: #f2852a;
+            border-radius: 10px 10px 0 0;
+            img {
+                width: 50px;
+                float: left;
+                margin: 3px 0 0 0;
+            }
+            p {
+                width: ~"calc(100% - 100px)";
+                float: left;
+                font-weight: 900;
+                font-size: 16px;
+                color: #fff;
+                margin: 7px 0 0 0;
+                text-align: center;
+            }
+            svg {
+                width: 18px;
+                height: 18px;
+                fill: #fff;
+                float: right;
+                margin: 10px 0 0 0;
+                cursor: pointer;
+            }
+            .bss_toolbar_edit {
+                float: right;
+                background: #aaa;
+                color: #fff;
+                padding: 4px 20px;
+                border-radius: 4px;
+                margin: -2px 10px 0 10px;
+                font-size: 12px;
+                font-weight: 900;
+                user-select: none;
+                cursor: pointer;
+            }
+        }
+        .bss_toolbar_body {
+            float: left;
+            width: 100%;
+            &.hide_body {
+                display: none;
+            }
+            &.show_body {
+                display: block;
+            }
+        }
+        .edit_body_toolbar {
+            width: ~"calc(100% - 30px)";
+            float: left;
+            text-align: center;
+            padding: 10px 0 15px 0;
+        }
+        .bss_toolbar_item {
+            width: ~"calc(100% - 30px)";
+            padding: 10px 0 10px 0;
+            margin: 0 15px 0 15px;
+            position: relative;
+            white-space: pre-line;
+            -ms-word-break: break-all;
+            word-break: break-word;
+            word-wrap: break-word;
+            -webkit-hyphens: auto;
+            -moz-hyphens: auto;
+            border-bottom: 1px #f0f0f0 solid;
+            hyphens: auto;
+            float: left;
+            svg {
+                width: 16px;
+                height: 16px;
+                margin: 4px 15px 0 0;
+                float: left;
+            }
+            .toolbar_content {
+                width: ~"calc(100% - 35px)";
+                float: right;
+            }
+            .tooltip-content {
+                visibility: hidden;
+                width: 400px;
+                background-color: #555;
+                color: #fff;
+                text-align: left;
+                border-radius: 6px;
+                padding: 10px;
+                position: absolute;
+                z-index: 1;
+                bottom: ~"calc(100% - 40px)";
+                right: ~"calc(100% + 15px)";
+                margin-right: 0;
+                opacity: 0;
+                transition: opacity 0.3s;
+                a {
+                    color: #fff;
+                }
+            }
+
+            .tooltip-content::after {
+                content: "";
+                position: absolute;
+                top: ~"calc(100% - 30px)";
+                left: ~"calc(100% + 5px)";
+                margin-left: -5px;
+                border-width: 5px;
+                border-style: solid;
+                border-color: transparent transparent transparent #555;
+            }
+            &:hover {
+                .tooltip-content {
+                    visibility: visible;
+                    opacity: 1;
+                    @media only screen and (max-width: @screen__m) {
+                        visibility: hidden;
+                    }
+                }
+            }
+        }
+    }
+}

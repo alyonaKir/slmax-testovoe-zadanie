@@ -1,0 +1,62 @@
+<?php
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_ShippingRules
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+?>
+<script>
+    require(['jquery'], function ($) {
+        var cartItemScope = $('#rule_cart_scope_type');
+        var selectAllMethod = $('#mp-select-all');
+        var methods = $("select[name='rule[shipping_methods][]']");
+
+        selectAllMethod.prop("checked", true);
+        $('select[name="rule[shipping_methods][]"] option').each(function () {
+            if (!$(this).prop('selected')) {
+                selectAllMethod.prop("checked", false);
+            }
+        });
+        selectAllMethod.on('change', function () {
+            if ($(this).prop("checked")) {
+                $('select[name="rule[shipping_methods][]"] option').prop('selected', true);
+            } else {
+                $('select[name="rule[shipping_methods][]"] option').prop('selected', false);
+            }
+        });
+        methods.on('change', function () {
+            $(this).find('option').each(function () {
+                if (!$(this).prop('selected')) {
+                    selectAllMethod.prop("checked", false);
+                }
+            });
+        });
+
+        if (cartItemScope.val() == '0') {
+            $('#rule_tabs_action_content').find('.rule-tree').hide();
+        } else {
+            $('#rule_tabs_action_content').find('.rule-tree').show();
+        }
+        cartItemScope.on('change', function () {
+            if ($(this).val() == '0') {
+                $('#rule_tabs_action_content').find('.rule-tree').hide();
+            } else {
+                $('#rule_tabs_action_content').find('.rule-tree').show();
+            }
+        });
+    });
+</script> 

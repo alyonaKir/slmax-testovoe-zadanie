@@ -1,0 +1,21 @@
+{
+    "name": "bsscommerce/meta-tag-manager",
+    "description": "Bss Meta Tag Manager Module",
+    "type": "magento2-module",
+    "version": "1.1.4",
+    "extra": {
+        "suite": "seo-suite"
+    },
+    "license": [
+        "OSL-3.0",
+        "AFL-3.0"
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Bss\\MetaTagManager\\": ""
+        }
+    }
+}

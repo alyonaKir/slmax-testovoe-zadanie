@@ -1,0 +1,56 @@
+<?php
+/**
+ * BSS Commerce Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://bsscommerce.com/Bss-Commerce-License.txt
+ *
+ * @category   BSS
+ * @package    Bss_CanonicalTag
+ * @author     Extension Team
+ * @copyright  Copyright (c) 2018-2019 BSS Commerce Co. ( http://bsscommerce.com )
+ * @license    http://bsscommerce.com/Bss-Commerce-License.txt
+ */
+?>
+<?php
+/**
+ * Canonical Tag Product
+ * @var $block Bss\CanonicalTag\Block\CanonicalTag
+ */
+?>
+<?php
+$helper = $block->getHelper();
+$dataHelper = $block->getDataHelper();
+
+//Get Info Canonical Tag
+$canonicalEnable = $dataHelper->isCanonicalEnable($block->getStoreId());
+$canonicalPath = $dataHelper->getProductPath($block->getStoreId());
+
+//Get Current Url
+$currentUrl = $block->getBaseUrl();
+$currentProduct = $block->getCurrentProduct();
+
+$seoCanonicalTag = $currentProduct->getData('seo_canonical_tag');
+$productSuffix = $dataHelper->getProductSuffixUrl($block->getStoreId());
+
+if ($canonicalPath === 'long') {
+    $allCategory = $block->getAllCategory($currentProduct);
+    $categoryPath = $block->getCanonicalUrlPath($currentProduct, $allCategory);
+    $productUrl = $currentUrl . $categoryPath . $productSuffix;
+} else {
+    $productPath = $block->getCanonicalUrlKey($currentProduct);
+    $productUrl = $currentUrl . $productPath . $productSuffix;
+}
+$canonicalTagUrl = $seoCanonicalTag;
+if ($seoCanonicalTag === '' || $seoCanonicalTag === null || !$seoCanonicalTag) {
+    $canonicalTagUrl = $productUrl;
+}
+?>
+<?php
+if ($canonicalEnable) : ?>
+    <link rel="canonical" href="<?php echo $canonicalTagUrl; ?>">
+<?php endif;

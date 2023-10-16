@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BSS Commerce Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://bsscommerce.com/Bss-Commerce-License.txt
+ *
+ * @category   BSS
+ * @package    Bss_XmlSiteMap
+ * @author     Extension Team
+ * @copyright  Copyright (c) 2018-2019 BSS Commerce Co. ( http://bsscommerce.com )
+ * @license    http://bsscommerce.com/Bss-Commerce-License.txt
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <bss_xmlsitemap>
+            <limit>
+                <max_lines>50000</max_lines>
+                <max_file_size>10485760</max_file_size>
+                <devide>category</devide>
+            </limit>
+            <page>
+                <priority>0.25</priority>
+                <changefreq>daily</changefreq>
+            </page>
+            <category>
+                <priority>0.5</priority>
+                <changefreq>daily</changefreq>
+            </category>
+            <homepage>
+                <enable_homepage>1</enable_homepage>
+                <enable_modify>1</enable_modify>
+                <priority>1</priority>
+                <changefreq>daily</changefreq>
+            </homepage>
+            <product>
+                <priority>1</priority>
+                <changefreq>daily</changefreq>
+                <image_include>all</image_include>
+            </product>
+            <generate>
+                <enabled>1</enabled>
+                <error_email />
+                <error_email_template>sitemap_generate_error_email_template</error_email_template>
+                <error_email_identity>general</error_email_identity>
+                <root_path>/</root_path>
+                <style_title>XML Sitemap</style_title>
+            </generate>
+            <search_engines>
+                <submission_robots>1</submission_robots>
+            </search_engines>
+            <addition>
+                <priority>0.5</priority>
+            </addition>
+            <file>
+                <valid_paths>
+                    <available>
+                        <any_path>/*/*.xml</any_path>
+                    </available>
+                </valid_paths>
+            </file>
+        </bss_xmlsitemap>
+    </default>
+</config>

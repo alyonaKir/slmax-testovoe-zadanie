@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<!--
+/**
+ *
+ * BSS Commerce Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://bsscommerce.com/Bss-Commerce-License.txt
+ *
+ *  @category  BSS
+ *  @package   Bss_ProductLabel
+ *  @author    Extension Team
+ *  @copyright Copyright (c) 2017-2018 BSS Commerce Co. ( http://bsscommerce.com )
+ *  @license   http://bsscommerce.com/Bss-Commerce-License.txt
+ */
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <!--This will append a block contains Product label in ProductList-->
+    <type name="Magento\Catalog\Pricing\Render\FinalPriceBox">
+        <plugin name="CustomizeProductListCommon_Plugin" type="Bss\ProductLabel\Plugin\CustomizeProductListCommon" />
+    </type>
+
+    <!--This will append a block contains Product label in CartPage-->
+    <type name="Magento\Checkout\Block\Cart\Item\Renderer\Actions">
+        <plugin name="CustomizeCartCommonPage_Plugin" type="Bss\ProductLabel\Plugin\CustomizeCartCommonPage" />
+    </type>
+
+    <!--This will set product in Category page-->
+    <type name="Magento\Catalog\Block\Product\AbstractProduct">
+        <plugin name="SetProductInProductList_Plugin" type="Bss\ProductLabel\Plugin\SetProductInProductList" sortOrder="10" />
+    </type>
+    <!--This will set product in Search/Sub-category/Wishlist/Compare page-->
+    <type name="Magento\Catalog\Model\Product">
+        <plugin name="SetProductInCommonPage_Plugin" type="Bss\ProductLabel\Plugin\SetProductInCommonPage" sortOrder="10" />
+    </type>
+
+    <!--This will set product in Cart page-->
+    <type name="Magento\Checkout\Block\Cart\Item\Renderer">
+        <plugin name="SetProductInCart_Plugin" type="Bss\ProductLabel\Plugin\SetProductInCart" sortOrder="10" />
+    </type>
+
+    <!--This will set product in Wishlist page-->
+    <type name="Magento\Wishlist\Model\Item">
+        <plugin name="SetProductInWishlist_Plugin" type="Bss\ProductLabel\Plugin\SetProductInWishlist" sortOrder="10" />
+    </type>
+
+    <!--This will append label data for product in sidebar-cart-->
+    <type name="Magento\Checkout\Model\DefaultConfigProvider">
+        <plugin name="SetLabelDataInSidebarCart_Plugin" type="Bss\ProductLabel\Plugin\SetLabelDataInSidebarCart" sortOrder="10" />
+    </type>
+
+    <!--This will append label data for product in minicart-->
+    <type name="Magento\Checkout\CustomerData\AbstractItem">
+        <plugin name="SetLabelDataInMinicart_Plugin" type="Bss\ProductLabel\Plugin\SetLabelDataInMinicart" sortOrder="10" />
+    </type>
+
+    <!--This will set product for wishlist-sidebar-->
+    <type name="Magento\Wishlist\CustomerData\Wishlist">
+        <plugin name="SetLabelDataInWishlistSidebar_Plugin" type="Bss\ProductLabel\Plugin\SetLabelDataInWishlistSidebar" sortOrder="10" />
+    </type>
+
+</config>

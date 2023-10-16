@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BSS Commerce Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at thisURL:
+ * http://bsscommerce.com/Bss-Commerce-License.txt
+ *
+ * @category   BSS
+ * @package    Bss_ShoppingCartRulePerStoreView
+ * @author     Extension Team
+ * @copyright  Copyright (c) 2017-2018 BSS Commerce Co. ( http://bsscommerce.com )
+ * @license    http://bsscommerce.com/Bss-Commerce-License.txt
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<preference for="Magento\SalesRule\Model\ResourceModel\Rule" type="Bss\ShoppingCartRulePerStoreView\Model\ResourceModel\RuleAdmin" />
+
+  	<type name="Magento\SalesRule\Model\Rule\Metadata\ValueProvider">
+		<plugin name="Bss_ShoppingCartRulePerStoreView::ValueProvider" type="Bss\ShoppingCartRulePerStoreView\Plugin\Rule\Metadata\ValueProvider" sortOrder="1" />
+	</type>
+
+	<type name="Magento\SalesRule\Model\ResourceModel\SaveHandler">
+		<plugin name="Bss_ShoppingCartRulePerStoreView::SaveHandler" type="Bss\ShoppingCartRulePerStoreView\Plugin\ResourceModel\SaveHandler" sortOrder="1" />
+	</type>
+
+	<type name="Magento\SalesRule\Model\ResourceModel\ReadHandler">
+		<plugin name="Bss_ShoppingCartRulePerStoreView::ReadHandler" type="Bss\ShoppingCartRulePerStoreView\Plugin\ResourceModel\ReadHandler" sortOrder="1" />
+	</type>
+</config>

@@ -1,0 +1,21 @@
+{  
+	"name": "bsscommerce/seo-suite",
+	"description": "Bss SEO Suite Module",
+	"type": "magento2-module",
+	"version": "1.0.6",
+	"extra": {
+		"suite-version": "28"
+	},
+	"license": [
+		"OSL-3.0",
+		"AFL-3.0"
+	],
+	"autoload": {
+		"files": [
+			"registration.php"
+		],
+		"psr-4": {
+			"Bss\\Breadcrumbs\\": ""
+		}
+	}
+}

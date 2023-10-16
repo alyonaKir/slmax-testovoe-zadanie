@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="mst_optimize" showInDefault="1" showInWebsite="1" showInStore="1" type="text" translate="label">
+            <group id="optimize_html" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="30">
+                <label>HTML Optimization</label>
+
+                <field id="minify_html" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Minify HTML</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <config_path>dev/template/minify_html</config_path>
+                    <frontend_model>Mirasvit\Optimize\Block\Adminhtml\System\Config\YesNoField</frontend_model>
+                    <attribute type="description">
+                        HTML minification slightly reduce HTML size by removing extra symbols
+                    </attribute>
+                    <attribute type="onChange">
+                        Please run bin/magento setup:static-content:deploy after save configuration
+                    </attribute>
+                </field>
+
+                <field id="preload_fonts" translate="label" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Preload recourses</label>
+                    <frontend_model>Mirasvit\OptimizeHtml\Block\Adminhtml\Config\Form\Field\PreloadFonts</frontend_model>
+                    <backend_model>Magento\Config\Model\Config\Backend\Serialized\ArraySerialized</backend_model>
+                    <comment><![CDATA[
+                        Insert paths for fonts that should be preloaded.<br/>
+                        Example: /pub/static/version1600338479/frontend/Magento/luma/en_US/fonts/Luma-Icons.woff2<br/>
+                        Note: version will be resolved automaticaly.<br/>
+                        Insert paths to third-party origins with "preconnect::" prefix to make your website pre-connect
+                        to these origins during the initial loading of the page.<br/>
+                        Example: preconnect::https://maxcdn.bootstrapcdn.com
+                        ]]></comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

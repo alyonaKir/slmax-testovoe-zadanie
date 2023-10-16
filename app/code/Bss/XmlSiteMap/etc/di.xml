@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BSS Commerce Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://bsscommerce.com/Bss-Commerce-License.txt
+ *
+ * @category   BSS
+ * @package    Bss_XmlSiteMap
+ * @author     Extension Team
+ * @copyright  Copyright (c) 2018-2019 BSS Commerce Co. ( http://bsscommerce.com )
+ * @license    http://bsscommerce.com/Bss-Commerce-License.txt
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Bss\XmlSiteMap\Model\Sitemap">
+        <arguments>
+            <argument name="resource" xsi:type="object">Bss\XmlSiteMap\Model\ResourceModel\Sitemap</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Config\Model\Config\Export\ExcludeList">
+        <arguments>
+            <argument name="configs" xsi:type="array">
+                <item name="bss_xmlsitemap/generate/error_email" xsi:type="string">1</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Catalog\Model\Category\DataProvider">
+        <plugin name="bss_xml_sitemap_excluded_sitemap" type="Bss\XmlSiteMap\Plugin\Model\Category\DataProvider" sortOrder="1" disabled="false"/>
+    </type>
+</config>

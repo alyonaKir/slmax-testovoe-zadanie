@@ -1,0 +1,82 @@
+"Save and Continue Edit","Save and Continue Edit"
+"Edit Rule","Edit Rule"
+"New Rule","New Rule"
+Actions,Actions
+"What To Do","What To Do"
+"Select Shipping Methods","Select Shipping Methods"
+"Where To Apply","Where To Apply"
+"Apply the rule only if the following conditions are met (leave blank for all products).","Apply the rule only if the following conditions are met (leave blank for all products)."
+Conditions,Conditions
+"Apply the rule depending on Cart Price Rules (This will overide the condition above).","Apply the rule depending on Cart Price Rules (This will overide the condition above)."
+"Active if these Cart Price Rules are applied","Active if these Cart Price Rules are applied"
+"Inactive if these Cart Price Rules are applied","Inactive if these Cart Price Rules are applied"
+"If a rule is selected in both fields, this field will be applied.","If a rule is selected in both fields, this field will be applied."
+General,General
+Name,Name
+Description,Description
+"For internal use, this field is visible to admins.","For internal use, this field is visible to admins."
+Status,Status
+"Store View(s)","Store View(s)"
+"Customer Group(s)","Customer Group(s)"
+"From Date","From Date"
+"To Date","To Date"
+"Select Day(s)","Select Day(s)"
+"From Time","From Time"
+"To Time","To Time"
+Priority,Priority
+"If several rules meet the condition, the one with the lowest priority will be applied.","If several rules meet the condition, the one with the lowest priority will be applied."
+"Select All","Select All"
+"Rule Information","Rule Information"
+"This Rule no longer exists.","This Rule no longer exists."
+"The Rule has been deleted.","The Rule has been deleted."
+"Rule to delete was not found.","Rule to delete was not found."
+Rules,Rules
+"Manage Rules","Manage Rules"
+"Please correct the data sent.","Please correct the data sent."
+"Something went wrong while saving the Rule.","Something went wrong while saving the Rule."
+"Rules has been deleted.","Rules has been deleted."
+"Something wrong when delete Rules.","Something wrong when delete Rules."
+"Something went wrong while updating status for %1.","Something went wrong while updating status for %1."
+"A total of %1 record(s) have been updated.","A total of %1 record(s) have been updated."
+"The rule has been saved.","The rule has been saved."
+"start from","start from"
+"end with","end with"
+Show,Show
+Hide,Hide
+Monday,Monday
+Tuesday,Tuesday
+Wednesday,Wednesday
+Thursday,Thursday
+Friday,Friday
+Saturday,Saturday
+Sunday,Sunday
+"Backend Orders","Backend Orders"
+"Storefront Purchases","Storefront Purchases"
+"Please choose a condition to add.","Please choose a condition to add."
+"Product attribute combination","Product attribute combination"
+"Products subselection","Products subselection"
+"Conditions combination","Conditions combination"
+"Cart Attribute","Cart Attribute"
+"Payment Method","Payment Method"
+"Backend Order","Backend Order"
+"Frontend Order","Frontend Order"
+"All Store Views","All Store Views"
+"Shipping Restrictions","Shipping Restrictions"
+Enable,Enable
+"Select <b>Yes</b> to enable this module","Select <b>Yes</b> to enable this module"
+"Add Rule","Add Rule"
+"Store View","Store View"
+"All Customer Group","All Customer Group"
+"Customer Group","Customer Group"
+"All Shipping Method","All Shipping Method"
+"Shipping Method","Shipping Method"
+Delete,Delete
+"Delete Rules","Delete Rules"
+"Are you sure you wan't to delete selected Rules?","Are you sure you wan't to delete selected Rules?"
+"Change Status","Change Status"
+Disable,Disable
+ID,ID
+"Shipping Methods","Shipping Methods"
+"Created Date","Created Date"
+"Updated Date","Updated Date"
+Edit,Edit

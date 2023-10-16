@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="mst_optimize_js_bundle_file" resource="default" engine="innodb" comment="mst_optimize_js_bundle_file">
+        <column xsi:type="int" name="file_id" padding="11" unsigned="false" nullable="false" identity="true" comment="file_id"/>
+        <column xsi:type="varchar" name="area" nullable="false" length="255" comment="area"/>
+        <column xsi:type="varchar" name="layout" nullable="false" length="255" comment="layout"/>
+        <column xsi:type="varchar" name="theme" nullable="false" length="255" comment="theme"/>
+        <column xsi:type="varchar" name="locale" nullable="false" length="255" comment="locale"/>
+        <column xsi:type="varchar" name="filename" nullable="false" length="255" comment="filename"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="file_id"/>
+        </constraint>
+        <index referenceId="MST_OPTIMIZE_JS_BUNDLE_FILE_FILENAME" indexType="btree" disabled="true">
+            <column name="filename"/>
+        </index>
+        <index referenceId="MAGE_MST_OPTIMIZE_JS_BUNDLE_FILE_LAYOUT_AREA" indexType="btree" disabled="true">
+            <column name="layout"/>
+            <column name="area"/>
+        </index>
+        <index referenceId="MAGE_MST_OPTIMIZE_JS_BUNDLE_FILE_LLTA" indexType="btree">
+            <column name="layout"/>
+            <column name="locale"/>
+            <column name="theme"/>
+            <column name="area"/>
+        </index>
+    </table>
+</schema>

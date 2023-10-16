@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!--
+/**
+ *
+ * BSS Commerce Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://bsscommerce.com/Bss-Commerce-License.txt
+ *
+ *  @category  BSS
+ *  @package   Bss_ProductLabel
+ *  @author    Extension Team
+ *  @copyright Copyright (c) 2017-2018 BSS Commerce Co. ( http://bsscommerce.com )
+ *  @license   http://bsscommerce.com/Bss-Commerce-License.txt
+ */
+-->
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="productlabel_label_listing_data_source" xsi:type="string">Bss\ProductLabel\Model\ResourceModel\Label\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Bss\ProductLabel\Model\ResourceModel\Label\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">bss_productlabel_label</argument>
+            <argument name="resourceModel" xsi:type="string">Bss\ProductLabel\Model\ResourceModel\Label</argument>
+        </arguments>
+    </virtualType>
+
+    <preference for="Magento\Catalog\Block\Product\ProductList\Related" type="Bss\ProductLabel\Block\Product\CustomRelated" />
+    <preference for="Magento\Catalog\Block\Product\ProductList\Upsell" type="Bss\ProductLabel\Block\Product\CustomUpsell" />
+    <preference for="Magento\Checkout\Block\Cart\Crosssell" type="Bss\ProductLabel\Block\Product\CustomCrosssell" />
+    <preference for="Magento\Catalog\Block\Product\Compare\ListCompare" type="Bss\ProductLabel\Block\Product\SetProductInCompare" />
+
+    <!--This will set label data for Recently Viewed/Compared Widget-->
+    <type name="Magento\Catalog\Ui\DataProvider\Product\Listing\Collector\AdditionalInfo">
+        <plugin name="SetLabelDataInRecentViewedWidget_Plugin" type="Bss\ProductLabel\Plugin\Catalog\Ui\AdditionalInfo" sortOrder="10" />
+    </type>
+
+    <!--remove attribute of Label data while exporting product-->
+    <preference for="Magento\CatalogImportExport\Model\Export\Product" type="Bss\ProductLabel\Plugin\CatalogImportExport\Export\Product" />
+
+</config>

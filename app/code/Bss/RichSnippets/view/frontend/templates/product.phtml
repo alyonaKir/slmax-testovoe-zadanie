@@ -1,0 +1,151 @@
+<?php
+/**
+ * BSS Commerce Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://bsscommerce.com/Bss-Commerce-License.txt
+ *
+ * =================================================================
+ *                 MAGENTO EDITION USAGE NOTICE
+ * =================================================================
+ * This package designed for Magento COMMUNITY edition
+ * BSS Commerce does not guarantee correct work of this extension
+ * on any other Magento edition except Magento COMMUNITY edition.
+ * BSS Commerce does not provide extension support in case of
+ * incorrect edition usage.
+ * =================================================================
+ *
+ * @category   BSS
+ * @package    Bss_RichSnippets
+ * @author     Extension Team
+ * @copyright  Copyright (c) 2015-2016 BSS Commerce Co. ( http://bsscommerce.com )
+ * @license    http://bsscommerce.com/Bss-Commerce-License.txt
+ */
+?>
+<?php
+$helper = $block->getHelper();
+$currentProduct = $block->getCurrentProduct();
+$sku = $currentProduct->getSku();
+$name = $currentProduct->getName();
+$price = $currentProduct->getFinalPrice();
+
+$layoutFactory = $block->getLayoutFactory();
+
+if(isset($layoutFactory->getMetadata()['description'])) {
+    $description = $layoutFactory->getMetadata()['description'];
+} else {
+    $description = $currentProduct->getMetaDescription();
+}
+
+$productUrl =  $currentProduct->getProductUrl();
+
+$description = strip_tags($description);
+$description = str_replace('"', '\'', $description);
+
+$productStock = $block->getStockItem($currentProduct);
+
+$brand = $currentProduct->getAttributionText('brand');
+
+$imageProduct = $block->getUrl('pub/media/catalog').'product'.$currentProduct->getImage();
+$richItem = $block->getReviewsCollection($currentProduct->getId())->getItems();
+$rating = $block->getRatingSummary($currentProduct->getId());
+$currentCurrencyCode = $block->getCode();
+//This is Get Enable for Product
+$enableName = $helper->getEnableName();
+$enableSku = $helper->getEnableSku();
+$enableImage = $helper->getEnableImage();
+$enableDescription = $helper->getEnableDescription();
+$enableReview = $helper->getEnableReview();
+$enableRating = $helper->getEnableRating();
+$enableInStock = $helper->getEnableAvailability();
+$enablePrice = $helper->getEnablePrice();
+$enableBreadscumbs = $helper->getBreadscumbs();
+?>
+<?php if ($enableBreadscumbs == '1'): ?>
+    <?php echo '<script type="application/ld+json">'; ?>
+    {
+        "@context": "http://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "<?php echo $block->escapeHtml($name); ?>",
+            "item": "<?php echo $block->escapeHtml($productUrl); ?>"
+        }
+    }
+    </script>
+
+    <?php
+endif; ?>
+
+<?php $myCount = 0; ?>
+
+<?php if ($enableName == '1'): ?>
+
+    <?php echo '<script type="application/ld+json">'; ?>
+    {
+        "@context": "http://schema.org/",
+        "@type": "Product",
+        "name": "<?php
+    echo $block->escapeHtml($name); ?>"<?php if ($enableImage == '1'): ?>,
+        "image": "<?php
+        echo $block->escapeUrl($imageProduct); ?>"<?php
+    endif; ?><?php if ($enableDescription == '1'): ?>,
+        "description": "<?php
+        echo $block->escapeHtml($description); ?>"<?php
+    endif; ?><?php if ($brand !== null): ?>,
+        "brand": "<?php
+        echo $block->escapeHtml($brand); ?>"<?php
+        endif; ?><?php if ($enableSku == '1'): ?>,
+        "sku": "<?php
+        echo $block->escapeHtml($sku); ?>"<?php
+    endif; ?><?php if ($enableRating == '1' && $rating['count'] != null && $rating['count'] != ''): ?>,
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "<?php echo $block->escapeHtml($rating['value']); ?>",
+            "bestRating": "100",
+            "ratingCount": "<?php echo $block->escapeHtml($rating['count']); ?>"
+        }<?php
+    endif; ?><?php if ($enableReview == '1' ): ?>,
+        "review": [
+            <?php
+        foreach ($richItem as $review):?>
+            <?php
+            $detailReview = $review->getDetail();
+            $detailReview = strip_tags($detailReview);
+            $detailReview = str_replace('"', '\'', $detailReview);
+            $myCount++; ?>
+            <?php
+            if ($myCount > 1): ?>,<?php
+            endif; ?>{
+                "@type": "Review",
+                "author": "<?php echo $block->escapeHtml($review->getNickname()); ?>",
+                "datePublished": "<?php echo $block->escapeHtml($review->getCreatedAt()); ?>",
+                "description": "<?php echo $block->escapeHtml($detailReview); ?>"
+            }
+            <?php
+        endforeach; ?>
+        ]<?php
+    endif; ?>
+
+    <?php
+    if ($enablePrice == '1'): ?>,
+        "offers": {
+            "@type": "Offer",
+            "itemCondition":"https://schema.org/NewCondition",
+            "priceCurrency": "<?php echo $block->escapeHtml($currentCurrencyCode); ?>",
+            "url": "<?php echo $block->escapeHtml($productUrl); ?>",
+            "price": "<?php echo $block->escapeHtml($price); ?>"<?php
+            if ($productStock->getIsInStock() == '1'): ?><?php
+            if ($enableInStock == '1'): ?>,
+            "availability": "http://schema.org/InStock"<?php else: ?>,
+            "availability": "http://schema.org/OutOfStock"<?php endif; ?><?php endif; ?>
+        }<?php endif; ?>
+    }
+    </script>
+
+<?php endif; ?>

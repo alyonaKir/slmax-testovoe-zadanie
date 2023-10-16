@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_ShippingRules
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="editor"/>
+    <head>
+        <css src="Mageplaza_ShippingRules::css/style.css"/>
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <block class="Mageplaza\ShippingRules\Block\Adminhtml\Rule\Edit" name="mageplaza_shippingrules_rule_edit"/>
+            <block class="Magento\Framework\View\Element\Template" template="Mageplaza_ShippingRules::rule/form/action.phtml" name="mp.rule.form.before" as="mp_form_before"/>
+        </referenceContainer>
+        <referenceContainer name="left">
+            <block class="Mageplaza\ShippingRules\Block\Adminhtml\Rule\Edit\Tabs" name="mageplaza_shippingrules_rule_tabs">
+                <block class="Mageplaza\ShippingRules\Block\Adminhtml\Rule\Edit\Tab\General" name="mageplaza_shippingrules_rule_edit_tab_general"/>
+                <block class="Mageplaza\ShippingRules\Block\Adminhtml\Rule\Edit\Tab\Conditions" name="mageplaza_shippingrules_rule_edit_tab_condition"/>
+                <block class="Mageplaza\ShippingRules\Block\Adminhtml\Rule\Edit\Tab\Actions" name="mageplaza_shippingrules_rule_edit_tab_action"/>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">rule</argument>
+                    <argument name="block" xsi:type="string">mageplaza_shippingrules_rule_edit_tab_general</argument>
+                </action>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">condition</argument>
+                    <argument name="block" xsi:type="string">mageplaza_shippingrules_rule_edit_tab_condition</argument>
+                </action>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">action</argument>
+                    <argument name="block" xsi:type="string">mageplaza_shippingrules_rule_edit_tab_action</argument>
+                </action>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

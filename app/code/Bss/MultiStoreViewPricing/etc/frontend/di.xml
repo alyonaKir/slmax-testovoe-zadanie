@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BSS Commerce Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://bsscommerce.com/Bss-Commerce-License.txt
+ *
+ * @category   BSS
+ * @package    Bss_MultiStoreViewPricing
+ * @author     Extension Team
+ * @copyright  Copyright (c) 2017-2018 BSS Commerce Co. ( http://bsscommerce.com )
+ * @license    http://bsscommerce.com/Bss-Commerce-License.txt
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<type name="Magento\CatalogSearch\Model\Adapter\Mysql\Aggregation\DataProvider">
+		<plugin name="Bss_MultiStoreViewPricing::Filter_Price_DataProvider" type="Bss\MultiStoreViewPricing\Plugin\Filter\Price\DataProvider"/>
+	</type>
+
+	<type name="Magento\CatalogSearch\Model\Search\TableMapper">
+		<plugin name="Bss_MultiStoreViewPricing::Search_TableMapper" type="Bss\MultiStoreViewPricing\Plugin\CatalogSearch\TableMapper"/>
+	</type>
+
+	<preference for="Magento\Checkout\Model\Session" type="Bss\MultiStoreViewPricing\Model\Checkout\Session" />
+
+	<type name="Magento\Store\Controller\Store\SwitchAction">
+		<plugin name="Bss_MultiStoreViewPricing::SwitchAction" type="Bss\MultiStoreViewPricing\Plugin\Store\SwitchStore" sortOrder="1" />
+	</type>
+
+	<type name="Magento\Checkout\Block\Cart\Sidebar">
+		<plugin name="Bss_MultiStoreViewPricing::Block_Cart_Sidebar" type="Bss\MultiStoreViewPricing\Model\Cart\ConfigPlugin" />
+	</type>
+
+	<type name="Magento\Checkout\CustomerData\Cart">
+		<plugin name="Bss_MultiStoreViewPricing::CustomerData_Cart" type="Bss\MultiStoreViewPricing\Plugin\Checkout\CustomerData\Cart"/>
+	</type>
+
+	<preference for="Magento\CatalogSearch\Model\Search\FilterMapper\ExclusionStrategy" type="Bss\MultiStoreViewPricing\Model\Search\FilterMapper\ExclusionStrategy" />
+
+	<preference for="Magento\CatalogSearch\Model\Layer\Filter\Price" type="Bss\MultiStoreViewPricing\Model\CatalogSearch\Layer\Filter\Price" />
+
+	<type name="Magento\Quote\Model\Quote\Validator\MinimumOrderAmount\ValidationMessage">
+		<plugin name="Bss_MultiStoreViewPricing::MinimumOrderAmount_ValidationMessage" type="Bss\MultiStoreViewPricing\Plugin\Quote\Validator\MinimumOrderAmount\ValidationMessage"/>
+	</type>
+
+	<type name="Magento\CatalogWidget\Block\Product\ProductsList">
+		<plugin name="Bss_MultiStoreViewPricing::CatalogWidget_Block_Product_ProductsList"
+				type="Bss\MultiStoreViewPricing\Plugin\CatalogWidget\Block\Product\ProductsList"
+				sortOrder="10"/>
+	</type>
+</config>

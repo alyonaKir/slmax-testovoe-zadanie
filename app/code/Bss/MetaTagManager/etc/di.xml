@@ -1,0 +1,46 @@
+<?xml version="1.0" ?>
+<!--
+/**
+ * BSS Commerce Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://bsscommerce.com/Bss-Commerce-License.txt
+ *
+ * @category   BSS
+ * @package    Bss_MetaTagManager
+ * @author     Extension Team
+ * @copyright  Copyright (c) 2018-2019 BSS Commerce Co. ( http://bsscommerce.com )
+ * @license    http://bsscommerce.com/Bss-Commerce-License.txt
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<virtualType name="Bss\MetaTagManager\Model\ResourceModel\MetaTemplate\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">bss_meta_template</argument>
+			<argument name="resourceModel" xsi:type="string">Bss\MetaTagManager\Model\ResourceModel\MetaTemplate\Collection</argument>
+		</arguments>
+	</virtualType>
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+		<arguments>
+			<argument name="collections" xsi:type="array">
+				<item name="bss_meta_template_grid_data_source" xsi:type="string">Bss\MetaTagManager\Model\ResourceModel\MetaTemplate\Grid\Collection</item>
+				<item name="bss_category_meta_template_grid_data_source" xsi:type="string">Bss\MetaTagManager\Model\ResourceModel\CategoryMetaTemplate\Grid\Collection</item>
+			</argument>
+		</arguments>
+	</type>
+	<virtualType name="Bss\MetaTagManager\Model\ResourceModel\CategoryMetaTemplate\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">bss_category_meta_template</argument>
+			<argument name="resourceModel" xsi:type="string">Bss\MetaTagManager\Model\ResourceModel\CategoryMetaTemplate\Collection</argument>
+		</arguments>
+	</virtualType>
+
+	<type name="Magento\Catalog\Model\Category\DataProvider">
+		<plugin name="bss_meta_tag_exclude_meta" type="Bss\MetaTagManager\Plugin\Model\Category\DataProvider" sortOrder="1" disabled="false"/>
+	</type>
+
+</config>

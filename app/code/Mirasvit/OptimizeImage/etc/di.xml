@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!--DATA-->
+    <preference for="Mirasvit\OptimizeImage\Api\Data\FileInterface" type="Mirasvit\OptimizeImage\Model\File"/>
+
+    <!--Entity Manager-->
+    <type name="Magento\Framework\EntityManager\MetadataPool">
+        <arguments>
+            <argument name="metadata" xsi:type="array">
+                <item name="Mirasvit\OptimizeImage\Api\Data\FileInterface" xsi:type="array">
+                    <item name="entityTableName" xsi:type="const">Mirasvit\OptimizeImage\Api\Data\FileInterface::TABLE_NAME</item>
+                    <item name="identifierField" xsi:type="const">Mirasvit\OptimizeImage\Api\Data\FileInterface::ID</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\EntityManager\HydratorPool">
+        <arguments>
+            <argument name="hydrators" xsi:type="array">
+                <item name="Mirasvit\OptimizeImage\Api\Data\FileInterface" xsi:type="string">Magento\Framework\EntityManager\AbstractModelHydrator</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Framework\Console\CommandList">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="Mirasvit_OptimizeImage::optimize" xsi:type="object">Mirasvit\OptimizeImage\Console\Command\OptimizeCommand</item>
+                <item name="Mirasvit_OptimizeImage::validate" xsi:type="object">Mirasvit\OptimizeImage\Console\Command\ValidateCommand</item>
+                <item name="Mirasvit_OptimizeImage::reset" xsi:type="object">Mirasvit\OptimizeImage\Console\Command\ResetCommand</item>
+                <item name="Mirasvit_OptimizeImage::responsive" xsi:type="object">Mirasvit\OptimizeImage\Console\Command\ResponsiveCommand</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <type name="Mirasvit\Optimize\Processor\OutputProcessor">
+        <arguments>
+            <argument name="pool" xsi:type="array">
+                <item name="0_fotorama" xsi:type="object">Mirasvit\OptimizeImage\Processor\FotoramaProcessor</item>
+                <item name="0_image" xsi:type="object">Mirasvit\OptimizeImage\Processor\ImageProcessor</item>
+                <item name="0_swatch" xsi:type="object">Mirasvit\OptimizeImage\Processor\SwatchesProcessor</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <!--Validator-->
+    <type name="Mirasvit\Core\Api\Service\ValidationServiceInterface">
+        <arguments>
+            <argument name="validators" xsi:type="array">
+                <item name="optimize_image" xsi:type="object">Mirasvit\OptimizeImage\Service\ValidationService</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_PaymentRestriction
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!--Grid collection-->
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="mageplaza_paymentrestriction_rule_listing_data_source" xsi:type="string">Mageplaza\PaymentRestriction\Model\ResourceModel\Rule\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Quote\Model\PaymentMethodManagement">
+        <plugin name="paymentrestriction-paymentmethod-list" type="Mageplaza\PaymentRestriction\Plugin\Model\PaymentMethodManagement"/>
+    </type>
+    <type name="Magento\Checkout\Model\ShippingInformationManagement">
+        <plugin name="paymentrestriction-paymentmethod-payment" type="Mageplaza\PaymentRestriction\Plugin\Model\ShippingInformationManagement"/>
+    </type>
+    <type name="Magento\Checkout\Model\PaymentInformationManagement">
+        <plugin name="paymentrestriction-paymentmethod-placeorder" type="Mageplaza\PaymentRestriction\Plugin\Model\PaymentInformationManagement"/>
+    </type>
+    <type name="Magento\Checkout\Model\GuestPaymentInformationManagement">
+        <plugin name="paymentrestriction-paymentmethod-guest-placeorder" type="Mageplaza\PaymentRestriction\Plugin\Model\GuestPaymentInformationManagement"/>
+    </type>
+    <type name="Mageplaza\Osc\Model\CheckoutManagement">
+        <plugin name="osc-paymentrestriction-checkoutmanagement" type="Mageplaza\PaymentRestriction\Plugin\Model\CheckoutManagement"/>
+    </type>
+</config>

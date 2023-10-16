@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BSS Commerce Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://bsscommerce.com/Bss-Commerce-License.txt
+ *
+ * @category   BSS
+ * @package    Bss_MultiStoreViewPricing
+ * @author     Extension Team
+ * @copyright  Copyright (c) 2017-2018 BSS Commerce Co. ( http://bsscommerce.com )
+ * @license    http://bsscommerce.com/Bss-Commerce-License.txt
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<preference for="Magento\Catalog\Model\Config\Source\Price\Scope" type="Bss\MultiStoreViewPricing\Model\Config\Source\Price\Scope" />
+
+	<preference for="Magento\Catalog\Model\Product\Attribute\Backend\Price" type="Bss\MultiStoreViewPricing\Model\Product\Attribute\Backend\Price" />
+
+	<preference for="Magento\OfflineShipping\Model\ResourceModel\Carrier\Tablerate" type="Bss\MultiStoreViewPricing\Model\OfflineShipping\ResourceModel\Carrier\Tablerate" />
+
+	<preference for="Magento\OfflineShipping\Model\ResourceModel\Carrier\Tablerate\RateQuery" type="Bss\MultiStoreViewPricing\Model\OfflineShipping\ResourceModel\Carrier\Tablerate\RateQuery" />
+
+	<preference for="Magento\OfflineShipping\Block\Adminhtml\Carrier\Tablerate\Grid" type="Bss\MultiStoreViewPricing\Block\OfflineShipping\Adminhtml\Carrier\Tablerate\Grid" />
+
+	<preference for="Magento\OfflineShipping\Controller\Adminhtml\System\Config\ExportTablerates" type="Bss\MultiStoreViewPricing\Controller\OfflineShipping\Adminhtml\System\Config\ExportTablerates" />
+
+	<preference for="Magento\OfflineShipping\Block\Adminhtml\Form\Field\Export" type="Bss\MultiStoreViewPricing\Block\OfflineShipping\Adminhtml\Form\Field\Export" />
+
+	<type name="Magento\Catalog\Model\Product\Attribute\Backend\Price">
+        <plugin name="Bss_MultiStoreViewPricing::Product_Attribute_Backend_Price" type="Bss\MultiStoreViewPricing\Plugin\Product\Attribute\Backend\Price" />
+    </type>
+
+	<preference for="Magento\Framework\Search\Dynamic\DataProviderInterface"
+				type="Bss\MultiStoreViewPricing\Model\CatalogSearch\Adapter\Mysql\Dynamic\DataProvider" />
+</config>

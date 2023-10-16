@@ -1,0 +1,98 @@
+<?php
+/**
+ * BSS Commerce Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://bsscommerce.com/Bss-Commerce-License.txt
+ *
+ * =================================================================
+ *                 MAGENTO EDITION USAGE NOTICE
+ * =================================================================
+ * This package designed for Magento COMMUNITY edition
+ * BSS Commerce does not guarantee correct work of this extension
+ * on any other Magento edition except Magento COMMUNITY edition.
+ * BSS Commerce does not provide extension support in case of
+ * incorrect edition usage.
+ * =================================================================
+ *
+ * @category   BSS
+ * @package    Bss_RichSnippets
+ * @author     Extension Team
+ * @copyright  Copyright (c) 2015-2016 BSS Commerce Co. ( http://bsscommerce.com )
+ * @license    http://bsscommerce.com/Bss-Commerce-License.txt
+ */
+?>
+<?php
+$helper = $block->getHelper();
+$categoryName = $block->getTitlePage();
+$getEnableModule = $helper->getEnable();
+$categoryImage = $block->getCurrentCategory()->getImage();
+$mediaUrl = $block->getMediaUrl();
+$websiteImage = $helper->getWebsiteImage();
+$checkImage = $websiteImage;
+if ($categoryImage == null) {
+    $categoryImage = $websiteImage;
+    $categoryImage = $mediaUrl.'bss/logo/'.$categoryImage;
+} else {
+    $categoryImage = $block->getUrl('pub/media/catalog').'category/'.$categoryImage;
+}
+$description = $block->getCurrentCategory()->getDescription();
+$categoryUrl = $block->getCurrentCategory()->getUrl();
+$enableName = $helper->getEnableNameCategory();
+$websiteDescription = $helper->getWebsiteDescription();
+if ($description == null) {
+    $description = $websiteDescription;
+}
+$enableDescription = $helper->getEnableDescriptionCategory();
+$enableImage = $helper->getEnableImageCategory();
+$getEnable = $helper->getEnableForCategory();
+$getEnableTwitter = $helper->getEnableForCategoryT();
+$twitterUser = $helper->getTwitterUser();
+?>
+<?php
+if ($getEnableModule == '1'): ?>
+	<?php
+    if ($getEnable == '1'): ?>
+        <meta property="og:type" content="og:product" />
+        <meta property="og:title" content="<?php echo $block->escapeHtml($categoryName); ?>" />
+        <meta property="og:image" content="<?php echo $block->escapeUrl($categoryImage); ?>" />
+        <meta property="og:description" content="<?php echo $block->escapeHtml($description); ?>" />
+        <meta property="og:url" content="<?php echo $block->escapeUrl($categoryUrl); ?>" />
+        <?php
+    endif; ?>
+
+    <?php
+    if ($getEnableTwitter == '1'): ?>
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:site" content="<?php echo $block->escapeUrl($twitterUser); ?>" />
+        <meta name="twitter:title" content="<?php echo $block->escapeHtml($categoryName); ?>" />
+        <?php
+        if ($description != null): ?>
+            <meta name="twitter:description" content="<?php echo $block->escapeHtml($description); ?>" />
+        <?php
+        endif; ?>
+        <meta name="twitter:image" content="<?php echo $block->escapeUrl($categoryImage); ?>" />
+
+    <?php
+    endif; ?>
+    <?php
+    if ($enableName == '1'): ?>
+        <?php echo '<script type="application/ld+json">'; ?>
+        {
+            "@context": "http://schema.org/",
+            "@type": "WebPage",
+            "name": "<?php echo $block->escapeHtml($categoryName); ?>"<?php
+        if ($enableDescription == '1' && $description != null): ?>,
+            "description": "<?php
+            echo $block->escapeHtml($description); ?>"<?php
+        endif; ?>
+        }
+        </script>
+	<?php
+    endif; ?>
+    <?php
+endif;

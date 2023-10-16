@@ -1,0 +1,62 @@
+@font-face {
+  font-family: 'Material Icons';
+  src: url('../fonts/material-icons/Mini-MaterialIcons.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'Material Icons' !important;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-email:before {
+  content: "\e0be";
+}
+.icon-clear:before {
+  content: "\e5cd";
+}
+.icon-local_grocery_store:before {
+  content: "\e8cc";
+}
+.icon-arrow_back:before {
+  content: "\e5c4";
+}
+.icon-arrow_forward:before {
+  content: "\e5c8";
+}
+.icon-menu:before {
+  content: "\e5d2";
+}
+.icon-person_outline:before {
+  content: "\e7ff";
+}
+.icon-star:before {
+  content: "\e838";
+}
+.icon-check_box:before {
+  content: "\e834";
+}
+.icon-check_box_outline_blank:before {
+  content: "\e835";
+}
+.icon-add_shopping_cart:before {
+  content: "\e854";
+}
+.icon-build:before {
+  content: "\e869";
+}
+.icon-home:before {
+  content: "\e88a";
+}

@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!--
+/**
+* BSS Commerce Co.
+*
+* NOTICE OF LICENSE
+*
+* This source file is subject to the EULA
+* that is bundled with this package in the file LICENSE.txt.
+* It is also available through the world-wide-web at this URL:
+* http://bsscommerce.com/Bss-Commerce-License.txt
+*
+* =================================================================
+*                 MAGENTO EDITION USAGE NOTICE
+* =================================================================
+* This package designed for Magento COMMUNITY edition
+* BSS Commerce does not guarantee correct work of this extension
+* on any other Magento edition except Magento COMMUNITY edition.
+* BSS Commerce does not provide extension support in case of
+* incorrect edition usage.
+* =================================================================
+*
+* @category   BSS
+* @package    Bss_MultiStoreViewPricing
+* @author     Extension Team
+* @copyright  Copyright (c) 2016-2017 BSS Commerce Co. ( http://bsscommerce.com )
+* @license    http://bsscommerce.com/Bss-Commerce-License.txt
+*/
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+	<preference for="Magento\CatalogRule\Model\Indexer\IndexBuilder" type="Bss\MultiStoreViewPricingCatalogRule\Model\Indexer\IndexBuilder" />
+
+	<preference for="Magento\CatalogRule\Model\Indexer\ReindexRuleProductPrice" type="Bss\MultiStoreViewPricingCatalogRule\Model\Indexer\ReindexRuleProductPrice" />
+
+	<preference for="Magento\CatalogRule\Model\Indexer\RuleProductsSelectBuilder" type="Bss\MultiStoreViewPricingCatalogRule\Model\Indexer\RuleProductsSelectBuilder" />
+
+	<preference for="Magento\CatalogRule\Model\Indexer\RuleProductPricesPersistor" type="Bss\MultiStoreViewPricingCatalogRule\Model\Indexer\RuleProductPricesPersistor" />
+
+	<type name="Magento\ConfigurableProduct\Model\ResourceModel\Product\Type\Configurable\Product\Collection">
+        <plugin name="Bss_MultiStoreViewPricing::ConfigurableProduct_AddCatalogRulePrice" type="Bss\MultiStoreViewPricingCatalogRule\Plugin\ConfigurableProduct\Model\ResourceModel\AddCatalogRulePrice" />
+    </type>
+</config>

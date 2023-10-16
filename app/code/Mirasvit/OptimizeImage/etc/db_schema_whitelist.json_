@@ -1,0 +1,26 @@
+{
+    "mst_optimize_image_file": {
+        "column": {
+            "file_id": true,
+            "basename": true,
+            "relative_path": true,
+            "optimized_path": true,
+            "file_extension": true,
+            "original_size": true,
+            "actual_size": true,
+            "webp_path": true,
+            "compression": true,
+            "created_at": true,
+            "processed_at": true
+        },
+        "index": {
+            "MST_OPTIMIZE_IMAGE_FILE_PROCESSED_AT": true,
+            "MST_OPTIMIZE_IMAGE_FILE_RELATIVE_PATH": true,
+            "MST_OPTIMIZE_IMAGE_FILE_OPTIMIZED_PATH": true,
+            "MST_OPTIMIZE_IMAGE_FILE_SIZE_PROCESSED_COMPR": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

@@ -1,0 +1,93 @@
+"Save and Continue Edit","Save and Continue Edit"
+"Edit Rule","Edit Rule"
+"New Rule","New Rule"
+"Calculation Shipping Fee","Calculation Shipping Fee"
+"How to apply fee","How to apply fee"
+"Minimum fee change","Minimum fee change"
+"Maximum fee change","Maximum fee change"
+"Minimum of Total Shipping Fee","Minimum of Total Shipping Fee"
+"Maximum of Total Shipping Fee","Maximum of Total Shipping Fee"
+"Order Scope","Order Scope"
+Type,Type
+"Fee Amount","Fee Amount"
+"Cart Total includes","Cart Total includes"
+"Cart Items Scope","Cart Items Scope"
+"Item price includes","Item price includes"
+"Apply the rule only to cart items matching the following conditions (leave blank for all items).","Apply the rule only to cart items matching the following conditions (leave blank for all items)."
+Actions,Actions
+"Apply for free shipping items","Apply for free shipping items"
+"If <b>No</b>, the rule will not be applied for products with free shipping.","If <b>No</b>, the rule will not be applied for products with free shipping."
+"Apply the rule only if the following conditions are met (leave blank for all products).","Apply the rule only if the following conditions are met (leave blank for all products)."
+Conditions,Conditions
+"Apply the rule depending on Cart Price Rules (This will overide the condition above).","Apply the rule depending on Cart Price Rules (This will overide the condition above)."
+"Active if these Cart Price Rules are applied","Active if these Cart Price Rules are applied"
+"Inactive if these Cart Price Rules are applied","Inactive if these Cart Price Rules are applied"
+"If a rule is selected in both fields, this field will be applied.","If a rule is selected in both fields, this field will be applied."
+General,General
+Name,Name
+Description,Description
+Status,Status
+"Select Shipping Methods","Select Shipping Methods"
+"Store Views","Store Views"
+"Customer Groups","Customer Groups"
+"From Date","From Date"
+"To Date","To Date"
+"Select Days","Select Days"
+"From Time","From Time"
+"To Time","To Time"
+Priority,Priority
+"If several rules meet the condition, the one with the lowest priority will be applied.","If several rules meet the condition, the one with the lowest priority will be applied."
+"Discard Subsequent Rules","Discard Subsequent Rules"
+"Select All","Select All"
+"Rule Information","Rule Information"
+"This Rule no longer exists.","This Rule no longer exists."
+"The Rule has been deleted.","The Rule has been deleted."
+"Rule to delete was not found.","Rule to delete was not found."
+Rules,Rules
+"Manage Shipping Rules","Manage Shipping Rules"
+"Please correct the data sent.","Please correct the data sent."
+"Something went wrong while saving the Rule.","Something went wrong while saving the Rule."
+"Rules has been deleted.","Rules has been deleted."
+"Something wrong when delete Rules.","Something wrong when delete Rules."
+"Something went wrong while updating status for %1.","Something went wrong while updating status for %1."
+"A total of %1 record(s) have been updated.","A total of %1 record(s) have been updated."
+"The rule has been saved.","The rule has been saved."
+"Re-calculate shipping fee","Re-calculate shipping fee"
+"Add extra fee","Add extra fee"
+"Subtract extra fee","Subtract extra fee"
+Disable,Disable
+"Percentage of Item price","Percentage of Item price"
+"Fixed Amount","Fixed Amount"
+"Fixed amount with each of weight unit","Fixed amount with each of weight unit"
+Monday,Monday
+Tuesday,Tuesday
+Wednesday,Wednesday
+Thursday,Thursday
+Friday,Friday
+Saturday,Saturday
+Sunday,Sunday
+"-- Please select --","-- Please select --"
+Tax,Tax
+Discount,Discount
+"Percentage of cart total","Percentage of cart total"
+"Percentage of original shipping fee","Percentage of original shipping fee"
+"All Store Views","All Store Views"
+"Shipping Rules","Shipping Rules"
+Enable,Enable
+"Select <b>Yes</b> to enable this module","Select <b>Yes</b> to enable this module"
+"Apply for Backend Order","Apply for Backend Order"
+"Add Rule","Add Rule"
+"Store View","Store View"
+"All Customer Group","All Customer Group"
+"Customer Group","Customer Group"
+"All Shipping Method","All Shipping Method"
+"Shipping Method","Shipping Method"
+Delete,Delete
+"Delete Rules","Delete Rules"
+"Are you sure you wan't to delete selected Rules?","Are you sure you wan't to delete selected Rules?"
+"Change status","Change status"
+ID,ID
+"Shipping Methods","Shipping Methods"
+"Created Date","Created Date"
+"Updated Date","Updated Date"
+Edit,Edit

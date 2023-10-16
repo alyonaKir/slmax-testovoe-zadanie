@@ -1,0 +1,56 @@
+Main keyword is included in meta title.,Main keyword is included in meta title.
+Main keyword isn't included in meta title.,Main keyword isn't included in meta title.
+Main keyword is included in meta description.,Main keyword is included in meta description.
+Main keyword isn't included in meta description.,Main keyword isn't included in meta description.
+Main keyword appears in description (,Main keyword appears in description (
+times).,times).
+Main keyword does not appear in description (,Main keyword does not appear in description (
+Main keyword should be contained in the page URL.,Main keyword should be contained in the page URL.
+Main keyword is contained in the page URL.,Main keyword is contained in the page URL.
+Description should be more than 300 words (,Description should be more than 300 words (
+Description is less than 300 words (,Description is less than 300 words (
+Outbound link(s) appear(s) in description.,Outbound link(s) appear(s) in description.
+No outbound link in description.,No outbound link in description.
+Main keyword appears in the first paragraph.,Main keyword appears in the first paragraph.
+Main keyword does not appear in the first paragraph.,Main keyword does not appear in the first paragraph.
+Main keyword density is,Main keyword density is
+% (Recommended: 1-3%).,% (Recommended: 1-3%).
+Invalid parameter when connecting to Google Search Console. Please check your domain in Google Search Console.,Invalid parameter when connecting to Google Search Console. Please check your domain in Google Search Console.
+Go to,Go to
+Google Search Console,Google Search Console
+You have not yet added your domain to Google Search Console account:,You have not yet added your domain to Google Search Console account:
+Please set up Google Authorization Code to connect Google Search Console.,Please set up Google Authorization Code to connect Google Search Console.
+Store -> Configuration -> BSS Commerce SEO -> SEO Report,Store -> Configuration -> BSS Commerce SEO -> SEO Report
+to set up.,to set up.
+Main Keyword:,Main Keyword:
+Meta Keyword:,Meta Keyword:
+Page URL:,Page URL:
+No Data,No Data
+Crawl All Site,Crawl All Site
+Page URL,Page URL
+Canonical Tag,Canonical Tag
+Headings,Headings
+Images Alt,Images Alt
+Open Graph,Open Graph
+Twitter Card,Twitter Card
+Meta Title,Meta Title
+Meta Description,Meta Description
+Meta Keywords,Meta Keywords
+Main Keyword,Main Keyword
+View/Edit,View/Edit
+Back To SEO Report,Back To SEO Report
+SEO Audit,SEO Audit
+image without ALT,image without ALT
+images without ALT,images without ALT
+All images with ALT,All images with ALT
+View,View
+Edit,Edit
+SEO Report,SEO Report
+Bss Commerce SEO,Bss Commerce SEO
+General,General
+Google Search Console Start Date,Google Search Console Start Date
+Google Search Console End Date,Google Search Console End Date
+Custom End Date,Custom End Date
+Enter Google Authorization Code,Enter Google Authorization Code
+Google Authorization Code,Google Authorization Code
+SEO Report Dashboard,SEO Report Dashboard

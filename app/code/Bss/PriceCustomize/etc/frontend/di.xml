@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Magento\ConfigurableProduct\Pricing\Price\FinalPrice"
+                type="Bss\PriceCustomize\Model\ConfigurableProduct\FinalPrice"/>
+    <preference for="Magento\ConfigurableProduct\Pricing\Render\FinalPriceBox"
+                type="Bss\PriceCustomize\Model\ConfigurableProduct\Pricing\Render\FinalPriceBox"/>
+<!--    <preference for="Magento\Catalog\Block\Product\View"-->
+<!--                type="Bss\PriceCustomize\Override\Product\View"/>-->
+    <type name="Magento\ConfigurableProduct\Block\Product\View\Type\Configurable">
+        <plugin name="bss_configurable_price_customize"
+                type="Bss\PriceCustomize\Plugin\Block\Product\View\Type\Configurable"
+                sortOrder="10"
+                disabled="false" />
+    </type>
+    <type name="Magento\Catalog\Block\Product\View">
+        <plugin name="bss_configurable_view_price"
+                type="Bss\PriceCustomize\Plugin\Block\Product\View"
+                sortOrder="20"
+                disabled="false" />
+    </type>
+</config>

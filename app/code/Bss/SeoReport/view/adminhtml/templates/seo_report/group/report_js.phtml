@@ -1,0 +1,78 @@
+<?php
+/**
+ * BSS Commerce Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://bsscommerce.com/Bss-Commerce-License.txt
+ *
+ * @category   BSS
+ * @package    Bss_SeoReport
+ * @author     Extension Team
+ * @copyright  Copyright (c) 2018-2019 BSS Commerce Co. ( http://bsscommerce.com )
+ * @license    http://bsscommerce.com/Bss-Commerce-License.txt
+ */
+?>
+<?php
+/**
+ * Seo Toolbar Generate Button
+ * @var $block Bss\SeoReport\Block\Adminhtml\SeoReport\PageType\Product
+ */
+?>
+<?php
+$helperData = $block->getDataHelper();
+$statusEnable = $helperData->getEnableModule();
+//Get Info for SEO Report
+$settingUrl = $block->getSettingUrl();
+$searchConsoleUrl = $block->getSearchConsoleUrl();
+$currentUrl = $block->getBaseUrl();
+$metaTitle = $block->getMetaData()['meta_title'];
+$metaDescription = $block->getMetaData()['meta_description'];
+$metaKeyword = $block->getMetaData()['meta_keyword'];
+$mainKeyword = $block->getMetaData()['main_keyword'];
+$urlKey = $block->getMetaData()['url_key'];
+$description = $block->getMetaData()['description'];
+$pageUrl = $block->getPageUrl();
+$dataCrawl = $block->getDataCrawl();
+$crawlLink = $block->getLinkCrawl();
+$dataJson = [
+    "metaTitle" => $metaTitle,
+    "metaDescription" => $metaDescription,
+    "metaKeyword" => $metaKeyword,
+    "productUrl" => $pageUrl,
+    "urlKey" => $urlKey,
+    "description" => $description,
+    "mainKeyword" => $mainKeyword,
+    "searchConsoleUrl" => $searchConsoleUrl,
+    "baseUrl" => $currentUrl,
+    "settingUrl" => $settingUrl
+];
+$dataJsonEncode = $block->getDataHelper()->jsonEncode($dataJson);
+
+$dataCrawlJson = [
+    "dataCrawl" => $dataCrawl,
+    "crawlLink" => $crawlLink
+];
+$dataCrawlEncode = $block->getDataHelper()->jsonEncode($dataCrawlJson);
+?>
+
+<?php if ((int)$statusEnable): ?>
+    <script type="text/x-magento-init">
+        {
+            "#container": {
+                "Bss_SeoReport/js/report_field": <?php echo $dataJsonEncode; ?>
+            }
+        }
+    </script>
+
+    <script type="text/x-magento-init">
+        {
+            "#container": {
+                "Bss_SeoReport/js/entity_crawl": <?php echo $dataCrawlEncode; ?>
+            }
+        }
+    </script>
+<?php endif; ?>

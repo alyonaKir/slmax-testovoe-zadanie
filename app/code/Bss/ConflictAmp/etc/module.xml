@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+	<module name="Bss_ConflictAmp" setup_version="1.0.0">
+		<sequence>
+			<module name="Bss_DeferJs"/>
+			<module name="Bss_ProductLabel"/>
+			<module name="Zemez_Amp"/>
+			<module name="TemplateMonster_LayoutSwitcher"/>
+		</sequence>
+	</module>
+</config>

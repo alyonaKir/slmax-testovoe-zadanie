@@ -1,0 +1,19 @@
+{
+    "mst_optimize_js_bundle_file": {
+        "column": {
+            "file_id": true,
+            "area": true,
+            "layout": true,
+            "theme": true,
+            "locale": true,
+            "filename": true
+        },
+        "index": {
+            "MST_OPTIMIZE_JS_BUNDLE_FILE_FILENAME": true,
+            "MAGE_MST_OPTIMIZE_JS_BUNDLE_FILE_LAYOUT_AREA": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

@@ -1,0 +1,149 @@
+/**
+ * BSS Commerce Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://bsscommerce.com/Bss-Commerce-License.txt
+ *
+ * @category   BSS
+ * @package    Bss_MetaTagManager
+ * @author     Extension Team
+ * @copyright  Copyright (c) 2018-2019 BSS Commerce Co. ( http://bsscommerce.com )
+ * @license    http://bsscommerce.com/Bss-Commerce-License.txt
+ */
+& when (@media-common = true) {
+    .bss-variables-container {
+        display: none;
+        position: fixed;
+        width: 90%;
+        height: 100%;
+        right: 0;
+        top: 0;
+        background: #fff;
+        z-index: 701;
+        padding: 0;
+    }
+    .bss-variables-block {
+        width: 100%;
+        float: left;
+        overflow: auto;
+        height: ~"calc(100% - 60px)";
+        padding: 30px;
+    }
+    .bss-overlay {
+        display: none;
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background: #333;
+        left: 0;
+        top: 0;
+        z-index: 700;
+        opacity: .5;
+    }
+    .ic {
+        font-family: 'Admin Icons';
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        width: 40px;
+        height: 40px;
+        text-align: center;
+        line-height: 40px;
+        font-size: 1.5em;
+        cursor: pointer;
+    }
+    .ic-close:before {
+        content: '\e62f';
+    }
+    .variable-group-title {
+
+    }
+    .variable-group {
+        margin-bottom: 30px;
+    }
+    .bss-variables-container .variables-container-title {
+        font-size: 2em;
+        text-transform: uppercase;
+    }
+    .variable-group .variable-group-title {
+        font-size: 1.5em;
+        margin-bottom: 5px;
+    }
+    .variable-group .variable {
+        display: inline-block;
+        line-height: 1.8;
+        margin-left: 10px;
+    }
+
+    .seo_report_header_crawl {
+        width: 100%;
+        float: left;
+        margin: 0 0 20px 0;
+    }
+    .seo_report_header_crawl .seo_report_button {
+        background-color: #eb5202;
+        border-color: #eb5202;
+        color: #ffffff;
+        text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.25);
+        font-size: 1.6rem;
+        letter-spacing: .025em;
+        padding: 0.6875em 1em 0.6875em 1em;
+        float: left;
+        margin: 0 5px 0 0;
+        cursor: pointer;
+        user-select: none;
+    }
+    .seo_report_header_crawl .seo_report_button.right {
+        float: right;
+        margin: 0 0 0 5px;
+        background: #aaa;
+    }
+    .seo_report_header_crawl .seo_report_button.disable {
+        background: #dddddd;
+        cursor: not-allowed;
+    }
+    .seo_report_body_crawl {
+        width: 100%;
+        float: left;
+        min-height: 400px;
+    }
+    .seo_report_body_crawl .seo_report_process_crawl {
+        width: 100%;
+        float: left;
+        height: 5px;
+        border-radius: 5px;
+        background: #F0F0F0;
+        margin: 0 0 20px 0;
+        overflow: hidden;
+    }
+    .seo_report_body_crawl .seo_report_process_crawl .seo_report_percent_crawl {
+        width: 0;
+        background: #eb5202;
+        height: 5px;
+        border-radius: 5px;
+        transition: 0.2s all;
+    }
+    .seo_report_body_crawl .seo_report_show_crawl {
+        width: 100%;
+        height: 400px;
+        float: left;
+        background: #444;
+        padding: 15px;
+        overflow: auto;
+    }
+    .seo_report_body_crawl .seo_report_show_crawl .seo_report_show_crawl_child {
+        float: left;
+        width: 100%;
+    }
+    .seo_report_body_crawl .seo_report_show_crawl .item_show_crawl {
+        width: 100%;
+        float: left;
+        line-height: 1.4;
+        font-size: 14px;
+        color: #F0F0F0;
+    }
+}

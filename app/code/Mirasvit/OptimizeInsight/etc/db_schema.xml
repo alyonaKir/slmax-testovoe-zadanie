@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="mst_optimize_insight_score" resource="default" engine="innodb" comment="mst_optimize_insight_score">
+        <column xsi:type="int" name="score_id" padding="11" unsigned="false" nullable="false" identity="true" comment="score_id"/>
+        <column xsi:type="text" name="code" nullable="false" comment="code"/>
+        <column xsi:type="int" name="value" padding="11" unsigned="false" nullable="false" identity="false" default="0" comment="value"/>
+        <column xsi:type="text" name="url" nullable="false" comment="url"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP" comment="created_at"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="score_id"/>
+        </constraint>
+    </table>
+</schema>

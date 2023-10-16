@@ -1,0 +1,60 @@
+<?php
+/**
+ * BSS Commerce Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://bsscommerce.com/Bss-Commerce-License.txt
+ *
+ * @category   BSS
+ * @package    Bss_MetaTagManager
+ * @author     Extension Team
+ * @copyright  Copyright (c) 2018-2019 BSS Commerce Co. ( http://bsscommerce.com )
+ * @license    http://bsscommerce.com/Bss-Commerce-License.txt
+ */
+?>
+<?php
+/* @var $block \Bss\MetaTagManager\Block\Adminhtml\Generate */
+?>
+<?php
+$totalLink = $block->getTotalLink();
+$ajaxLink = $block->getLinkAjax();
+$crawlLink = $block->getLinkCrawl();
+$seoReportLink = $block->getSeoReportLink();
+$maxLinkCrawl = \Bss\SeoReport\Helper\Data::SEO_REPORT_CRAWL_MAX_URL;
+$metaTemplateId = $block->getMetaTemplateId();
+$dataJson = [
+    "totalLink" => $totalLink,
+    "ajaxLink" => $ajaxLink,
+    "crawlLink" => $crawlLink,
+    "maxLink" => $maxLinkCrawl,
+    "metaTemplateId" => $metaTemplateId
+];
+$dataJsonEncode = $block->jsonEncode($dataJson);
+?>
+<div class="seo_report_header_crawl">
+    <div class="seo_report_button" id="bss_seo_report_start_crawl"><?php echo __("Start Generating"); ?></div>
+    <a href="<?php echo $seoReportLink; ?>">
+        <div class="seo_report_button right"><?php echo __("Back To Meta Tag"); ?></div>
+    </a>
+</div>
+<div class="seo_report_body_crawl">
+    <div class="seo_report_process_crawl">
+        <div class="seo_report_percent_crawl" id="seo_report_percent_crawl"></div>
+    </div>
+    <div class="seo_report_show_crawl">
+        <div class="seo_report_show_crawl_child" id="seo_report_show_crawl_child">
+        </div>
+    </div>
+</div>
+
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Bss_MetaTagManager/js/generate": <?php echo $dataJsonEncode; ?>
+        }
+    }
+</script>

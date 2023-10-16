@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="mst_optimize_image_file" resource="default" engine="innodb" comment="mst_optimize_image_file">
+        <column xsi:type="int" name="file_id" padding="11" unsigned="false" nullable="false" identity="true" comment="file_id"/>
+        <column xsi:type="varchar" name="basename" nullable="false" length="255" comment="basename"/>
+        <column xsi:type="varchar" name="relative_path" nullable="false" length="255" comment="relative_path"/>
+        <column xsi:type="varchar" name="optimized_path" nullable="true" length="255" comment="optimized_path"/>
+        <column xsi:type="varchar" name="file_extension" nullable="false" length="5" comment="file_extension"/>
+        <column xsi:type="int" name="original_size" padding="11" unsigned="false" nullable="false" identity="false" comment="original_size"/>
+        <column xsi:type="int" name="actual_size" padding="11" unsigned="false" nullable="true" identity="false" comment="actual_size"/>
+        <column xsi:type="text" name="webp_path" nullable="true" comment="webp_path"/>
+        <column xsi:type="int" name="compression" padding="11" unsigned="false" nullable="true" default="100" identity="false" comment="compression"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP" comment="created_at"/>
+        <column xsi:type="timestamp" name="processed_at" on_update="false" nullable="true" comment="processed_at"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="file_id"/>
+        </constraint>
+        <index referenceId="MST_OPTIMIZE_IMAGE_FILE_PROCESSED_AT" indexType="btree">
+            <column name="processed_at"/>
+        </index>
+        <index referenceId="MST_OPTIMIZE_IMAGE_FILE_RELATIVE_PATH" indexType="btree">
+            <column name="relative_path"/>
+        </index>
+        <index referenceId="MST_OPTIMIZE_IMAGE_FILE_OPTIMIZED_PATH" indexType="btree">
+            <column name="optimized_path"/>
+        </index>
+        <index referenceId="MST_OPTIMIZE_IMAGE_FILE_SIZE_PROCESSED_COMPR" indexType="btree">
+            <column name="actual_size"/>
+            <column name="processed_at"/>
+            <column name="compression"/>
+        </index>
+    </table>
+</schema>

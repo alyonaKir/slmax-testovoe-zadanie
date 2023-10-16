@@ -1,0 +1,259 @@
+<?php
+/**
+ * BSS Commerce Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://bsscommerce.com/Bss-Commerce-License.txt
+ *
+ * @category   BSS
+ * @package    Bss_SeoAltText
+ * @author     Extension Team
+ * @copyright  Copyright (c) 2018-2019 BSS Commerce Co. ( http://bsscommerce.com )
+ * @license    http://bsscommerce.com/Bss-Commerce-License.txt
+ */
+?>
+<?php
+/**
+ * Album Template
+ *
+ * @var $block \Bss\SeoAltText\Block\Adminhtml\Album
+ */
+?>
+
+<?php
+$getGalleriesLink = $block->getGalleriesLink();
+$storeString = $block->getChooseFromStoreHtml();
+$productProcessLink = $block->getImageProcessLink();
+$dataJson = [
+    "galleriesLink" => $getGalleriesLink,
+    "productLink" => $productProcessLink,
+    "formKey" => $block->getFormKey(),
+    "statusArray" => $block->getProductHelper()->getStatus()->getOptionArray(),
+    "typeArray" => $block->getProductHelper()->getType()->getOptionArray(),
+    "visibilityArray" => $block->getProductHelper()->getVisibility()->getOptionArray(),
+    "attributeSetArray" => $block->getProductHelper()->getAttributeSet(),
+    "storeArray" => $block->storeObject
+];
+$dataJsonEncode = $block->getDataHelper()->jsonEncode($dataJson);
+?>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Bss_SeoAltText/js/album": <?= $dataJsonEncode; ?>
+        }
+    }
+</script>
+
+<div id="bss_alt_text_album">
+    <template>
+        <div class="admin__data-grid-filters-wrap _show bss_filters_block">
+            <fieldset class="admin__fieldset admin__data-grid-filters">
+                <div class="admin__form-field">
+                    <div class="admin__form-field-label">
+                        <span><?= __("Store View") ?></span>
+                    </div>
+                    <div class="admin__form-field-control">
+                        <?= $storeString; ?>
+                    </div>
+                </div>
+                <div class="admin__form-field">
+                    <div class="admin__form-field-label">
+                        <span><?= __("Name"); ?></span>
+                    </div>
+                    <div class="admin__form-field-control">
+                        <input class="admin__control-text" type="text" maxlength="255" v-model="dataFilters.name" @keyup="processKeyupChange()">
+                    </div>
+                </div>
+                <div class="admin__form-field">
+                    <div class="admin__form-field-label">
+                        <span><?= __("Visibility"); ?></span>
+                    </div>
+                    <div class="admin__form-field-control">
+                        <select class="admin__control-select" v-model="dataFilters.visibility" @change="handleChangeFilters()">
+                            <option value=""></option>
+                            <option v-for="(optionsItem, indexOptions) in options.visibilityArray" :value="indexOptions">{{optionsItem}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="admin__form-field">
+                    <div class="admin__form-field-label">
+                        <span><?= __("Attribute Set"); ?></span>
+                    </div>
+                    <div class="admin__form-field-control">
+                        <select class="admin__control-select" v-model="dataFilters.attributeSet" @change="handleChangeFilters()">
+                            <option value=""></option>
+                            <option v-for="(optionsItem, indexOptions) in options.attributeSetArray" :value="indexOptions">{{optionsItem}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="admin__form-field">
+                    <div class="admin__form-field-label">
+                        <span><?= __("Status"); ?></span>
+                    </div>
+                    <div class="admin__form-field-control">
+                        <select class="admin__control-select" v-model="dataFilters.status" @change="handleChangeFilters()">
+                            <option value=""></option>
+                            <option v-for="(optionsItem, indexOptions) in options.statusArray" :value="indexOptions">{{optionsItem}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="admin__form-field">
+                    <div class="admin__form-field-label">
+                        <span><?= __("Type"); ?></span>
+                    </div>
+                    <div class="admin__form-field-control">
+                        <select class="admin__control-select" v-model="dataFilters.type" @change="handleChangeFilters()">
+                            <option value=""></option>
+                            <option v-for="(optionsItem, indexOptions) in options.typeArray" :value="indexOptions">{{optionsItem}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="admin__form-field">
+                    <div class="admin__form-field-label">
+                        <span><?= __("SKU"); ?></span>
+                    </div>
+                    <div class="admin__form-field-control">
+                        <input class="admin__control-text" type="text" maxlength="255" v-model="dataFilters.sku" @keyup="processKeyupChange()">
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+        <div class="admin__data-grid-filters-current _show" v-if="processActiveFilters()">
+            <div class="admin__current-filters-title-wrap">
+                <span class="admin__current-filters-title"><?= __("Active filters:"); ?></span>
+            </div>
+            <div class="admin__current-filters-list-wrap">
+                <ul class="admin__current-filters-list" data-role="filter-list">
+                    <li v-if="Number(dataFilters.store) !== 0">
+                        <span><?= __("Store View:"); ?></span>
+                        <span>{{getFiltersValue('store')}}</span>
+                        <button class="action-remove" type="button" @click="handleRemoveFilters('store')">
+                            <span><?= __("Remove"); ?></span>
+                        </button>
+                    </li>
+                    <li v-if="dataFilters.name !== '' && dataFilters.name !== null">
+                        <span><?= __("Name:"); ?></span>
+                        <span>{{getFiltersValue('name')}}</span>
+                        <button class="action-remove" type="button" @click="handleRemoveFilters('name')">
+                            <span><?= __("Remove"); ?></span>
+                        </button>
+                    </li>
+                    <li v-if="dataFilters.visibility !== ''">
+                        <span><?= __("Visibility:"); ?></span>
+                        <span>{{getFiltersValue('visibility')}}</span>
+                        <button class="action-remove" type="button" @click="handleRemoveFilters('visibility')">
+                            <span><?= __("Remove"); ?></span>
+                        </button>
+                    </li>
+                    <li v-if="dataFilters.attributeSet !== ''">
+                        <span><?= __("Attribute Set:"); ?></span>
+                        <span>{{getFiltersValue('attribute_set')}}</span>
+                        <button class="action-remove" type="button" @click="handleRemoveFilters('attribute_set')">
+                            <span><?= __("Remove"); ?></span>
+                        </button>
+                    </li>
+                    <li v-if="dataFilters.status !== ''">
+                        <span><?= __("Status:"); ?></span>
+                        <span>{{getFiltersValue('status')}}</span>
+                        <button class="action-remove" type="button" @click="handleRemoveFilters('status')">
+                            <span><?= __("Remove"); ?></span>
+                        </button>
+                    </li>
+                    <li v-if="dataFilters.type !== ''">
+                        <span><?= __("Type:"); ?></span>
+                        <span>{{getFiltersValue('type')}}</span>
+                        <button class="action-remove" type="button" @click="handleRemoveFilters('type')">
+                            <span><?= __("Remove"); ?></span>
+                        </button>
+                    </li>
+                    <li v-if="dataFilters.sku !== '' && dataFilters.sku !== null">
+                        <span><?= __("SKU:"); ?></span>
+                        <span>{{getFiltersValue('sku')}}</span>
+                        <button class="action-remove" type="button" @click="handleRemoveFilters('sku')">
+                            <span><?= __("Remove"); ?></span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+            <div class="admin__current-filters-actions-wrap">
+                <button class="action-tertiary action-clear" type="button" @click="handleRemoveAllFilters()"><?= __("Clear all"); ?></button>
+            </div>
+        </div>
+        <div class="bss_alt_text_block">
+            <div class="bss_alt_text_block_left" :class="(statusOpenImage)?'is_open':''">
+                <div class="bss_alt_text_block_item" v-for="(galleryItem, index) in galleryObject" :key="'gallery_index' + index">
+                    <div class="bss_alt_text_block_item_child" v-for="(imageItem, imageIndex) in galleryItem.images" :key="'image_index_' + index + '_' + imageIndex" v-if="imageIndex === 0" :class="(indexOpen === (index + '_' + imageIndex))?'active':''">
+                        <div class="bss_alt_text_block_item_show_more" v-if="galleryItem.images.length > 1 && !galleryItem.isOpen" @click="handleOpenAlbum(index)">
+                            <p v-if="(galleryItem.images.length - 1) > 1">+{{(galleryItem.images.length - 1)}} images</p>
+                            <p v-if="(galleryItem.images.length - 1) === 1">+1 image</p>
+                        </div>
+                        <div class="bss_alt_text_block_item_show_less" v-if="galleryItem.images.length > 1 && galleryItem.isOpen" @click="handleCloseAlbum(index)">
+                            <svg viewBox="0 0 256 512"><path d="M231.293 473.899l19.799-19.799c4.686-4.686 4.686-12.284 0-16.971L70.393 256 251.092 74.87c4.686-4.686 4.686-12.284 0-16.971L231.293 38.1c-4.686-4.686-12.284-4.686-16.971 0L4.908 247.515c-4.686 4.686-4.686 12.284 0 16.971L214.322 473.9c4.687 4.686 12.285 4.686 16.971-.001z"></path></svg>
+                        </div>
+                        <img :src="imageItem.url" v-if="imageItem.url" @click="handleOpenImage(index, imageIndex)" />
+                        <div class="bss_alt_text_block_item_product_name">{{galleryItem.product_name}}</div>
+                    </div>
+                    <div class="bss_alt_text_block_item_child" v-for="(imageItem, imageIndex) in galleryItem.images" :key="'image_index_' + index + '_' + imageIndex" v-if="imageIndex > 0 && galleryItem.isOpen" :class="(indexOpen === (index + '_' + imageIndex))?'active':''">
+                        <img :src="imageItem.url" v-if="imageItem.url" @click="handleOpenImage(index, imageIndex)"/>
+                    </div>
+                </div>
+                <div class="bss_alt_text_block_loading" v-if="galleryLoading" :class="(galleryFirstLoad)?'first_load':''">
+                    <svg viewBox="0 0 100 100"><circle cx="50" cy="50" fill="none" stroke="#e0e0e0" stroke-width="10" r="35" stroke-dasharray="164.93361431346415 56.97787143782138" transform="rotate(183.242 50 50)"><animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;360 50 50" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animateTransform></circle></svg>
+                </div>
+                <div class="bss_alt_text_block_loadmore" @click="handleLoadMoreGallery()" v-if="galleryLoadMore" ><?= __("LOAD MORE"); ?></div>
+            </div>
+            <div class="bss_alt_text_block_right" v-if="statusOpenImage" id="bss_fixed_side_bar">
+                <div class="bss_alt_page_content">
+                    <div class="bss_alt_text_block_right_fixed">
+                        <div class="bss_alt_text_header_right">
+                            <div class="bss_alt_text_header_right_close" @click="handleCloseImage()">
+                                <svg viewBox="0 0 320 512"><path d="M207.6 256l107.72-107.72c6.23-6.23 6.23-16.34 0-22.58l-25.03-25.03c-6.23-6.23-16.34-6.23-22.58 0L160 208.4 52.28 100.68c-6.23-6.23-16.34-6.23-22.58 0L4.68 125.7c-6.23 6.23-6.23 16.34 0 22.58L112.4 256 4.68 363.72c-6.23 6.23-6.23 16.34 0 22.58l25.03 25.03c6.23 6.23 16.34 6.23 22.58 0L160 303.6l107.72 107.72c6.23 6.23 16.34 6.23 22.58 0l25.03-25.03c6.23-6.23 6.23-16.34 0-22.58L207.6 256z"></path></svg>
+                            </div>
+                            <img :src="imageOpenObject.url" v-if="imageOpenObject && imageOpenObject.url"/>
+                        </div>
+                        <div class="bss_alt_text_info_right">
+                            <div class="bss_alt_text_info_right_item">
+                                <a :href="itemOpenObject.edit_url" target="_blank" v-if="itemOpenObject.edit_url"><button id="save" title="<?= __("Edit Product"); ?>" type="button" class="action-default scalable save primary ui-button ui-widget ui-state-default ui-corner-all ui-button-text-only" data-ui-id="page-actions-toolbar-save-button" role="button" aria-disabled="false"><span class="ui-button-text"><span><?= __("Edit Product"); ?></span></span></button></a>
+                                <p class="info_right_item_sku">{{itemOpenObject.product_sku}}</p>
+                            </div>
+                            <div class="bss_alt_text_info_right_item title">
+                                <h2>{{itemOpenObject.product_name}}</h2>
+                            </div>
+                        </div>
+                        <div class="bss_alt_text_body_right">
+                            <div id="messages" v-if="statusNotification">
+                                <div class="messages">
+                                    <div class="message message-success success" v-if="statusNotification === 'success'">
+                                        <div data-ui-id="messages-message-success">{{messageNotification}}</div>
+                                    </div>
+                                    <div class="message message-error error" v-if="statusNotification === 'error'">
+                                        <div data-ui-id="messages-message-error">{{messageNotification}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bss_alt_text_body_title_input"><?= __("File Name:"); ?></div>
+                            <input type="text" v-model="fileEditText" @keyup="handleKeyupInput">
+                            <div class="bss_alt_text_body_title_input"><?= __("Alt Text:"); ?></div>
+                            <input type="text" v-model="altEditText" @keyup="handleKeyupInput">
+                            <button title="Save Config" type="button" @click="handleSaveConfig()" :class="(statusButtonDisable)?'bss_button_disable':''">
+                                <span class="ui-button-text">
+                                    <svg viewBox="0 0 100 100" v-if="statusButtonLoading"><circle cx="50" cy="50" fill="none" stroke="#e0e0e0" stroke-width="10" r="35" stroke-dasharray="164.93361431346415 56.97787143782138" transform="rotate(183.242 50 50)"><animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 50;360 50 50" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animateTransform></circle></svg>
+                                    <span><?= __("Save Config"); ?></span>
+                                </span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bss_alt_text_block_empty" v-if="galleryObject.length === 0 && !galleryFirstLoad">
+                <h3><?= __("We couldn't find any records."); ?></h3>
+            </div>
+        </div>
+    </template>
+</div>

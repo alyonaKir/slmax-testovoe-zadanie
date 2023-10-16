@@ -1,0 +1,42 @@
+<?php
+/**
+ *
+ * BSS Commerce Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://bsscommerce.com/Bss-Commerce-License.txt
+ *
+ *  @category  BSS
+ *  @package   Bss_ProductLabel
+ *  @author    Extension Team
+ *  @copyright Copyright (c) 2017-2018 BSS Commerce Co. ( http://bsscommerce.com )
+ *  @license   http://bsscommerce.com/Bss-Commerce-License.txt
+ */
+
+//  @codingStandardsIgnoreFile
+
+?>
+<?php
+/**
+ *  Label Image customize
+ *
+ * @var $block \Bss\ProductLabel\Block\Adminhtml\Label\Edit\ImageCustomize
+ */
+?>
+
+<p><i><?php echo __('Resize label and move to choose its position on product image as desired') ?></i></p>
+<input type="hidden" id="placeholder_img" value="<?php echo $this->getViewFileUrl('Bss_ProductLabel::images/default-placeholder.png'); ?>">
+
+<canvas id="canvas" width="500" height="500" style="border:1px solid #aaa"></canvas>
+
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Bss_ProductLabel/js/label": {}
+        }
+    }
+</script>

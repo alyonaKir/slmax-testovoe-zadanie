@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_ShippingRestriction
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Mageplaza_ShippingRestriction::shippingrestriction" title="Shipping Restrictions" module="Mageplaza_ShippingRestriction" sortOrder="110" resource="Mageplaza_ShippingRestriction::shippingrestriction" parent="Magento_Backend::stores"/>
+        <add id="Mageplaza_ShippingRestriction::rule" title="Manage Rules" module="Mageplaza_ShippingRestriction" sortOrder="10" action="mpshippingrestriction/rule" resource="Mageplaza_ShippingRestriction::rule" parent="Mageplaza_ShippingRestriction::shippingrestriction"/>
+        <add id="Mageplaza_ShippingRestriction::configuration" title="Configuration" module="Mageplaza_ShippingRestriction" sortOrder="1000" action="adminhtml/system_config/edit/section/mpshippingrestriction" resource="Mageplaza_ShippingRestriction::configuration" parent="Mageplaza_ShippingRestriction::shippingrestriction"/>
+    </menu>
+</config>

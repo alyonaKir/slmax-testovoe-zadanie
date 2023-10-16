@@ -1,0 +1,40 @@
+<?php
+/**
+ * BSS Commerce Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://bsscommerce.com/Bss-Commerce-License.txt
+ *
+ * @category   BSS
+ * @package    Bss_CanonicalTag
+ * @author     Extension Team
+ * @copyright  Copyright (c) 2018-2019 BSS Commerce Co. ( http://bsscommerce.com )
+ * @license    http://bsscommerce.com/Bss-Commerce-License.txt
+ */
+?>
+<?php
+/**
+ * Page Tag Block
+ * @var $block Bss\CanonicalTag\Block\Html\Pager
+ */
+?>
+<?php
+$dataHelper = $block->getDataHelper();
+$enablePage = $dataHelper->isCanonicalCategory($block->getStoreId());
+if ($enablePage) {
+    $resultPager = $block->getPageHeaders();
+    $hasPrevPage = $resultPager['prev']['status'];
+    $hasNextPage = $resultPager['next']['status'];
+    $nextPageUrl = $resultPager['next']['url'];
+    $prevPageUrl = $resultPager['prev']['url'];
+    if ($hasPrevPage) {
+        echo "<link rel='prev' href='{$prevPageUrl}'>" . PHP_EOL;
+    }
+    if ($hasNextPage) {
+        echo "<link rel='next' href='{$nextPageUrl}'>" . PHP_EOL;
+    }
+}

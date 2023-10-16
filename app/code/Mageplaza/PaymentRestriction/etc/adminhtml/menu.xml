@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_PaymentRestriction
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Mageplaza_PaymentRestriction::paymentrestriction" title="Payment Restriction" module="Mageplaza_PaymentRestriction" sortOrder="110" resource="Mageplaza_PaymentRestriction::paymentrestriction" parent="Magento_Sales::sales"/>
+        <add id="Mageplaza_PaymentRestriction::rule" title="Manage Rules" module="Mageplaza_PaymentRestriction" sortOrder="10" action="mppaymentrestriction/rule" resource="Mageplaza_PaymentRestriction::rule" parent="Mageplaza_PaymentRestriction::paymentrestriction"/>
+        <add id="Mageplaza_PaymentRestriction::configuration" title="Configuration" module="Mageplaza_PaymentRestriction" sortOrder="1000" action="adminhtml/system_config/edit/section/mppaymentrestriction" resource="Mageplaza_PaymentRestriction::configuration" parent="Mageplaza_PaymentRestriction::paymentrestriction"/>
+    </menu>
+</config>

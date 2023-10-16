@@ -1,0 +1,43 @@
+<!--
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_AutoRelated
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+-->
+
+@media only screen and (min-width: 1366px) {
+    .products-grid .product-items .product-item {
+        width: 22% !important;
+    }
+
+    .products-grid .product-items .product-item:nth-child(2n + 1) {
+        margin-left: 3% !important;
+    }
+
+    .products-grid .product-item .product-item-info {
+        width: 100%;
+    }
+
+    .products-grid .product-item .product-item-details {
+        padding-bottom: 10px;
+    }
+}
+
+
+
+

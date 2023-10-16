@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Bss\DeferJS\Helper\Data">
+        <plugin name="disable-config-defer" type="Bss\ConflictAmp\Plugin\DisableDefer"/>
+    </type>
+    <type name="Bss\ProductLabel\Helper\Data">
+        <plugin name="disable-config-prductlabel" type="Bss\ConflictAmp\Plugin\DisableProductLabel"/>
+    </type>
+</config>

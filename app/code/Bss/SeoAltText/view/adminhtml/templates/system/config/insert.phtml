@@ -1,0 +1,65 @@
+<?php
+/**
+ * BSS Commerce Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://bsscommerce.com/Bss-Commerce-License.txt
+ *
+ * @category   BSS
+ * @package    Bss_SeoAltText
+ * @author     Extension Team
+ * @copyright  Copyright (c) 2018-2019 BSS Commerce Co. ( http://bsscommerce.com )
+ * @license    http://bsscommerce.com/Bss-Commerce-License.txt
+ */
+?>
+<?php
+/**
+ * Start Check template
+ *
+ * @var $block \Bss\SeoAltText\Block\System\Config\Insert
+ */
+?>
+
+<?= $block->getInsertButtonSecond() ?>
+
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Bss_SeoAltText/js/variables": {
+            }
+        }
+    }
+</script>
+
+<div id="bss-overlay" class="bss-overlay"></div>
+
+<div id="bss-variables-container" class="bss-variables-container">
+    <div class="bss-variables-block">
+        <div id="bss-close" class="ic ic-close"></div>
+        <p class="variables-container-title"><?= __('Insert variables') ?></p>
+        <div class="bss-modal-insert-button">
+            <button type="button" class="bss-insert-checked-variables"><?= __('Insert') ?></button>
+        </div>
+        <br>
+        <?php
+
+        if ($block->getProductVariables()) : ?>
+            <div class="variable-group product-group">
+                <h5 class="variable-group-title"><?= __('Product Attributes') ?></h5><?php
+                foreach ($block->getProductVariables() as $key => $value) :?>
+                    <a href="#"
+                       data-insert="[<?= $block->escapeHtml($key); ?>]"
+                       class="variable variable-<?= $block->escapeHtml($key); ?>"><?= $block->escapeHtml($value); ?>
+                    </a>
+                    <input type="checkbox" name="attibute-value" value="[<?= $block->escapeHtml($key); ?>]"/><br>
+                <?php
+                endforeach; ?>
+            </div>
+        <?php
+        endif; ?>
+    </div>
+</div>

@@ -1,0 +1,10 @@
+button_label,button_label
+"All OK!","All OK!"
+"The extension requires at least a few frontend visits for allocating JavaScript by pages. Please try again later.","The extension requires at least a few frontend visits for allocating JavaScript by pages. Please try again later."
+"Run pre-fly checking","Run pre-fly checking"
+"Enable JavaScript Optimization","Enable JavaScript Optimization"
+"Merge JavaScript files","Merge JavaScript files"
+"Minify JavaScript","Minify JavaScript"
+"Move JavaScript To Page Bottom","Move JavaScript To Page Bottom"
+"Ignore URL List","Ignore URL List"
+"Defer YouTube videos","Defer YouTube videos"

@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="mst_optimize" showInDefault="1" showInWebsite="1" showInStore="1" type="text" translate="label">
+            <group id="optimize_js" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="10">
+                <label>JavaScript Optimization</label>
+
+                <field id="pre_fly_check" translate="button_label" type="button" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <button_label>Run pre-fly checking</button_label>
+                    <frontend_model>Mirasvit\OptimizeJs\Block\Adminhtml\System\Config\PreFlyCheckButton</frontend_model>
+                </field>
+
+                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Enable JavaScript Optimization</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <frontend_model>Mirasvit\Optimize\Block\Adminhtml\System\Config\YesNoField</frontend_model>
+                    <attribute type="description">
+                        JavaScript Optimization is a critical part of Magento 2 store optimization.
+                        It significantly reduces the number of loaded JS resources on-page and improves end-user experience.
+                    </attribute>
+                    <attribute type="onChange">
+                        Please run bin/magento setup:static-content:deploy after save configuration
+                    </attribute>
+                </field>
+
+                <field id="bundle_js_exception" translate="label" type="textarea" sortOrder="15" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Do not use JavaScript bundles on pages</label>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                    <frontend_model>Mirasvit\Optimize\Block\Adminhtml\System\Config\YesNoField</frontend_model>
+                    <attribute type="description">
+                        The list of page type patterns (action names) or URL patterns where JavaScript bundles shouldn't be used.
+                        &lt;/br&gt;Each pattern in the new line.
+                    </attribute>
+                </field>
+
+                <field id="merge_js" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Merge JavaScript files</label>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <config_path>dev/js/merge_files</config_path>
+                    <frontend_model>Mirasvit\Optimize\Block\Adminhtml\System\Config\YesNoField</frontend_model>
+                    <attribute type="description">
+                        Merge Javascript seeks to reduce the number of HTTP requests made by a browser during page refresh by replacing multiple distinct JS files with a single JS file.
+                    </attribute>
+                    <attribute type="onChange">
+                        Please run bin/magento setup:static-content:deploy after save configuration
+                    </attribute>
+                </field>
+
+                <field id="minify_js" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Minify JavaScript</label>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <config_path>dev/js/minify_files</config_path>
+                    <frontend_model>Mirasvit\Optimize\Block\Adminhtml\System\Config\YesNoField</frontend_model>
+                    <attribute type="description">
+                        Javascript minification allows reduce JavaScript files size.
+                    </attribute>
+                    <attribute type="onChange">
+                        Please run bin/magento setup:static-content:deploy after save configuration
+                    </attribute>
+                </field>
+
+                <field id="minify_js_exception" translate="label" type="textarea" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Do not minify files</label>
+                    <depends>
+                        <field id="enabled">1</field>
+                        <field id="minify_js">1</field>
+                    </depends>
+                    <frontend_model>Mirasvit\Optimize\Block\Adminhtml\System\Config\YesNoField</frontend_model>
+                    <attribute type="description">
+                        The list of JavaScript file name patterns that should be excluded from minification.
+                        &lt;/br&gt;Each pattern in the new line.
+                    </attribute>
+                </field>
+
+                <field id="move_js" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Move JavaScript To Page Bottom</label>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <frontend_model>Mirasvit\Optimize\Block\Adminhtml\System\Config\YesNoField</frontend_model>
+                    <attribute type="description">
+                        JavaScript resources near the top of the page can cause unnecessary delay to the loading and rendering of the page content/layout.
+                    </attribute>
+                    <attribute type="onChange">
+                        Please clear magento cache after save configuration
+                    </attribute>
+                </field>
+
+                <field id="move_js_url_exception" translate="label" type="textarea" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Ignore URL List</label>
+                    <depends>
+                        <field id="enabled">1</field>
+                        <field id="move_js">1</field>
+                    </depends>
+                    <frontend_model>Mirasvit\Optimize\Block\Adminhtml\System\Config\YesNoField</frontend_model>
+                    <attribute type="description">
+                        The list of pages (URL patterns), where JS won't move.
+                        &lt;/br&gt;Or a list of JS files (patterns for SCRIPT tags) that shouldn't be moved.
+                        &lt;/br&gt;For example:
+                        &lt;/br&gt; - to exclude pages like /category/page/*, pattern should be: category/page
+                        &lt;/br&gt; - to exclude JS files should be added pattern for JS file name (if JS file added as an external resource, with "src" attribute inside the SCRIPT tag),
+                        or part of the content inside SCRIPT tag (if JS code added directly to the page)
+                        &lt;/br&gt;Each pattern in the new line.
+                    </attribute>
+                </field>
+
+                <field id="youtube_lazy" translate="label" type="select" sortOrder="65" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Defer YouTube videos</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <frontend_model>Mirasvit\Optimize\Block\Adminhtml\System\Config\YesNoField</frontend_model>
+                    <attribute type="description">
+                        Replace the content of youtube iframe with placeholders to prevent loading iframe inner resources during page loading
+                    </attribute>
+                </field>
+
+                <field id="iframe_lazy" translate="label" type="select" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Lazyload iframes</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <frontend_model>Mirasvit\Optimize\Block\Adminhtml\System\Config\YesNoField</frontend_model>
+                    <attribute type="description">
+                        Lazyloading offscreen iframes.
+                    </attribute>
+                </field>
+
+                <field id="iframe_lazy_exception" translate="label" type="textarea" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Iframe lazyload exceptions</label>
+                    <depends>
+                        <field id="iframe_lazy">1</field>
+                    </depends>
+                    <frontend_model>Mirasvit\Optimize\Block\Adminhtml\System\Config\YesNoField</frontend_model>
+                    <attribute type="description">
+                        The list of patterns for iframes that shouldn't be lazyloaded.
+                        &lt;/br&gt;Can be the value or part of the value of src, class, id, or any other attribute.
+                        &lt;/br&gt;Each pattern in the new line.
+                    </attribute>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

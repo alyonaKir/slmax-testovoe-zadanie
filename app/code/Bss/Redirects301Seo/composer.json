@@ -1,0 +1,21 @@
+{  
+	"name": "bsscommerce/redirects-301-seo",
+	"description": "Redirects 301 SEO",
+	"type": "magento2-module",
+	"version": "1.0.5",
+	"extra": {
+		"suite": "seo-suite"
+	},
+	"license": [
+		"OSL-3.0",
+		"AFL-3.0"
+	],
+	"autoload": {
+		"files": [
+			"registration.php"
+		],
+		"psr-4": {
+			"Bss\\Redirects301Seo\\": ""
+		}
+	}
+}

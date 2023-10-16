@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="mst_optimize" showInDefault="1" showInWebsite="1" showInStore="1" type="text" translate="label">
+            <label>PageSpeed Optimizer</label>
+            <tab>mirasvit</tab>
+            <resource>Mirasvit_Optimize::config</resource>
+            <group id="optimize_other" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="100">
+                <label>Other Optimization</label>
+
+                <field id="sign_static_content" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Sign Static Files</label>
+                    <source_model>Mirasvit\Optimize\Model\Config\Source\YesNo</source_model>
+                    <config_path>dev/static/sign</config_path>
+                    <frontend_model>Mirasvit\Optimize\Block\Adminhtml\System\Config\YesNoField</frontend_model>
+                </field>
+
+                <field id="grid_async_reindex" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Asynchronous indexing</label>
+                    <source_model>Mirasvit\Optimize\Model\Config\Source\YesNo</source_model>
+                    <config_path>dev/grid/async_indexing</config_path>
+                    <frontend_model>Mirasvit\Optimize\Block\Adminhtml\System\Config\YesNoField</frontend_model>
+                </field>
+
+                <field id="flat_category" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Use Flat Catalog Category</label>
+                    <source_model>Mirasvit\Optimize\Model\Config\Source\YesNoFlat</source_model>
+                    <config_path>catalog/frontend/flat_catalog_category</config_path>
+                    <frontend_model>Mirasvit\Optimize\Block\Adminhtml\System\Config\YesNoField</frontend_model>
+                </field>
+
+                <field id="flat_product" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Use Flat Catalog Product</label>
+                    <source_model>Mirasvit\Optimize\Model\Config\Source\YesNoFlat</source_model>
+                    <config_path>catalog/frontend/flat_catalog_product</config_path>
+                    <frontend_model>Mirasvit\Optimize\Block\Adminhtml\System\Config\YesNoField</frontend_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

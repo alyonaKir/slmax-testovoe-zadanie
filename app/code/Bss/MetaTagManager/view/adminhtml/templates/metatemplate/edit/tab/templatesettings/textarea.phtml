@@ -1,0 +1,61 @@
+<?php
+/**
+ * BSS Commerce Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://bsscommerce.com/Bss-Commerce-License.txt
+ *
+ * @category   BSS
+ * @package    Bss_MetaTagManager
+ * @author     Extension Team
+ * @copyright  Copyright (c) 2018-2019 BSS Commerce Co. ( http://bsscommerce.com )
+ * @license    http://bsscommerce.com/Bss-Commerce-License.txt
+ */
+?>
+<?php
+/* @var $block \Bss\MetaTagManager\Block\Adminhtml\Metatemplate\Edit\Tab\TemplateSettings\TextArea */
+
+$element = $block->getElement();
+$note = $element->getNote() ? '<div class="note">' . $element->getNote() . '</div>' : '';
+$elementBeforeLabel = $element->getExtType() == 'checkbox' || $element->getExtType() == 'radio';
+$addOn = $element->getBeforeElementHtml() || $element->getAfterElementHtml();
+$fieldId = ($element->getHtmlContainerId()) ? ' id="' . $element->getHtmlContainerId() . '"' : '';
+$fieldClass = "admin__field field field-{$element->getId()} {$element->getCssClass()}";
+$fieldClass .= ($elementBeforeLabel) ? ' choice' : '';
+$fieldClass .= ($addOn) ? ' with-addon' : '';
+$fieldClass .= ($element->getRequired()) ? ' _required' : '';
+$fieldClass .= ($note) ? ' with-note' : '';
+$fieldAttributes = $fieldId . ' class="' . $fieldClass . '" '
+    . $block->getUiId('form-field', $element->getId());
+?>
+
+<?php if (!$element->getNoDisplay()) : ?>
+    <?php if ($element->getType() == 'hidden') : ?>
+        <?php echo $element->getElementHtml() ?>
+    <?php else : ?>
+    <div<?php /* @escapeNotVerified */ echo $fieldAttributes ?>>
+        <?php if ($elementBeforeLabel) : ?>
+            <?php echo $element->getElementHtml() ?>
+            <?php echo $element->getLabelHtml('', $element->getScopeLabel()) ?>
+            <?php /* @escapeNotVerified */ echo $note ?>
+        <?php else : ?>
+            <?php echo $element->getLabelHtml('', $element->getScopeLabel()) ?>
+            <div class="admin__field-control control bss-textarea-warpper">
+                <?php /* @escapeNotVerified */ echo($addOn) ? '<div class="addon">' . $element->getElementHtml() . '</div>' : $element->getElementHtml(); ?>
+                <?php echo $block->getHintHtml() ?>
+                <?php /* @escapeNotVerified */ echo $note ?>
+                <div class="bss-insert-button">
+                    <button type="button" class="bss-insert-variables"><?php echo __('Insert Template Variables') ?></button>
+                </div>
+            </div>
+            
+        <?php endif; ?>
+    </div>
+
+    <?php endif; ?>
+<?php endif; ?>
+

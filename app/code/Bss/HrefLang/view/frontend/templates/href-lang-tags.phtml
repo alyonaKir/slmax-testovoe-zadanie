@@ -1,0 +1,82 @@
+<?php
+/**
+ * BSS Commerce Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://bsscommerce.com/Bss-Commerce-License.txt
+ *
+ * @category   BSS
+ * @package    Bss_HrefLang
+ * @author     Extension Team
+ * @copyright  Copyright (c) 2016-2017 BSS Commerce Co. ( http://bsscommerce.com )
+ * @license    http://bsscommerce.com/Bss-Commerce-License.txt
+ */
+?>
+<?php
+// @codingStandardsIgnoreFile
+?>
+
+<?php
+/**
+ * Product list template
+ *
+ * @var $block \Bss\HrefLang\Block\HrefLang
+ */
+?>
+<?php
+//Get Url Other for Homepage
+$helper = $block->getDataHelper();
+
+//Url For HREFLANG
+$storeId = $block->getStoreId();
+$hreflangEnable = $helper->getEnableHreflang($storeId);
+$hreflangHomepage = $helper->getHomepageHreflang($storeId);
+$hreflangProduct = $helper->getProductHreflang($storeId);
+$hreflangCms = $helper->getCmsHreflang($storeId);
+$hreflangCategory = $helper->getCategoryHreflang($storeId);
+$handle = $block->getFullActionName();
+$hreflangTag = $block->getHrefLang();
+
+if ($hreflangEnable == '1'): ?>
+    <?php
+    if ($handle == 'cms_index_index' && $hreflangHomepage == '1'): ?>
+        <?php
+        foreach ($hreflangTag as $value): ?>
+            <?php echo $value; ?>
+        <?php
+        endforeach; ?>
+    <?php
+    endif; ?>
+    <?php
+    if ($handle == 'catalog_category_view' && $hreflangCategory == '1'): ?>
+        <?php
+        foreach ($hreflangTag as $value): ?>
+            <?php echo $value; ?>
+        <?php
+        endforeach; ?>
+    <?php
+    endif; ?>
+    <?php
+    if ($handle == 'catalog_product_view' && $hreflangProduct == '1'): ?>
+        <?php
+        foreach ($hreflangTag as $value): ?>
+            <?php echo $value; ?>
+        <?php
+        endforeach; ?>
+    <?php
+    endif; ?>
+    <?php
+    if ($handle == 'cms_page_view' && $hreflangCms == '1'): ?>
+        <?php
+        foreach ($hreflangTag as $value): ?>
+            <?php echo $value; ?>
+        <?php
+        endforeach; ?>
+    <?php
+    endif; ?>
+<?php
+endif;

@@ -1,0 +1,147 @@
+<?php
+/**
+ * BSS Commerce Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://bsscommerce.com/Bss-Commerce-License.txt
+ *
+ * =================================================================
+ *                 MAGENTO EDITION USAGE NOTICE
+ * =================================================================
+ * This package designed for Magento COMMUNITY edition
+ * BSS Commerce does not guarantee correct work of this extension
+ * on any other Magento edition except Magento COMMUNITY edition.
+ * BSS Commerce does not provide extension support in case of
+ * incorrect edition usage.
+ * =================================================================
+ *
+ * @category   BSS
+ * @package    Bss_RichSnippets
+ * @author     Extension Team
+ * @copyright  Copyright (c) 2015-2016 BSS Commerce Co. ( http://bsscommerce.com )
+ * @license    http://bsscommerce.com/Bss-Commerce-License.txt
+ */
+?>
+<?php
+$typePage = $block->getTypePage();
+$pageTitle = $block->getTitlePage();
+$mediaUrl = $block->getMediaUrl();
+$helper = $block->getHelper();
+$twitterUser = $helper->getTwitterUser();
+$getEnable = $helper->getEnableForWebsite();
+$currentUrl = $block->getUrl('*/*/*', ['_current' => true, '_use_rewrite' => true]);
+$websiteDescription = $helper->getWebsiteDescription();
+$websiteImage = $helper->getWebsiteImage();
+$websiteImage = $mediaUrl.'bss/logo/'.$websiteImage;
+$getEnableTwitter = $helper->getEnableForWebsiteT();
+if ($typePage != 'catalog_product_view' && $typePage != 'catalog_category_view' && $getEnable == '1') : ?>
+    <meta property="og:type" content="og:product" />
+    <meta property="og:title" content="<?php echo $block->escapeHtml($pageTitle); ?>" />
+    <meta property="og:image" content="<?php echo $block->escapeUrl($websiteImage); ?>" />
+    <meta property="og:description" content="<?php echo $block->escapeHtml($websiteDescription); ?>" />
+    <meta property="og:url" content="<?php echo $block->getUrl('*/*/*', ['_current' => true, '_use_rewrite' => true]); ?>" />
+    <?php
+endif; ?>
+<?php if ($typePage != 'catalog_product_view' && $typePage != 'catalog_category_view' && $getEnableTwitter == '1') : ?>
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="<?php echo $block->escapeHtml($twitterUser); ?>" />
+    <meta name="twitter:title" content="<?php echo $block->escapeHtml($pageTitle); ?>" />
+    <meta name="twitter:description" content="<?php echo $block->escapeHtml($websiteDescription); ?>" />
+    <meta name="twitter:image" content="<?php echo $block->escapeUrl($websiteImage); ?>" />
+    <?php
+endif; ?>
+<?php
+$baseUrl = $block->getBaseUrl();
+$fileUrl = $helper->getFileUrl();
+$searchBox = $helper->getSearchBox();
+$websiteName = $helper->getWebsiteName();
+$enableSiteName = $helper->getEnableWebsite();
+$companyName = $helper->getCompanyName();
+$companyPriceRange = $helper->getComapnyPriceRange();
+$companyEmail = $helper->getCompanyEmail();
+$companyTelephone = $helper->getCompanyTelephone();
+$companyAddress = $helper->getCompanyAddress();
+$companyStreet = $helper->getCompanyStreet();
+$companySocial = $helper->getCompanySocial();
+$companyCountry = $helper->getCompanyCountry();
+$companyPostCode = $helper->getCompanyPostCode();
+$imageUrl = $mediaUrl.'bss/logo/'.$fileUrl;
+$companyEnable = $helper->getEnableCompany();
+if ($companySocial != null) {
+    $companySocial = explode("\n", $companySocial);
+}
+?>
+<?php if ($enableSiteName == '1'): ?>
+    <?php
+    echo '<script type="application/ld+json">'; ?>
+    {
+        "@context": "http://schema.org",
+        "@type": "WebSite",
+        "name": "<?php echo $block->escapeHtml($websiteName); ?>",
+        "url": "<?php echo $block->escapeUrl($baseUrl); ?>"<?php
+    if ($searchBox == '1'): ?>,
+        "potentialAction": {
+            "@type": "SearchAction",
+            "target": "<?php echo $block->escapeHtml($block->getResultUrl()); ?>?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+        }<?php
+    endif; ?>
+    }
+    </script>
+
+    <?php
+endif; ?>
+<?php if ($companyEnable == '1') : ?>
+    <?php
+    echo '<script type="application/ld+json">'; ?>
+    {
+        "@context": "http://schema.org",
+        "@type": "LocalBusiness",
+        "@id": "<?php echo $block->escapeHtml($baseUrl); ?>",
+        "name": "<?php echo $block->escapeHtml($companyName); ?>",
+        "image": "<?php echo $block->escapeUrl($imageUrl); ?>",
+        "email": "<?php echo $block->escapeHtml($companyEmail); ?>",
+        "priceRange": "<?php echo $block->escapeHtml($companyPriceRange); ?>",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "<?php echo $block->escapeHtml($companyStreet); ?>",
+            "addressLocality": "<?php echo $block->escapeHtml($companyAddress); ?>",
+            "postalCode": "<?php echo $block->escapeHtml($companyPostCode); ?>",
+            "addressCountry": "<?php echo $block->escapeHtml($companyCountry); ?>"
+        },
+        "telephone": "<?php echo $block->escapeHtml($companyTelephone); ?>"
+        }
+    }
+    </script>
+    <?php
+endif; ?>
+<?php if ($companySocial != null && $companyEnable == '1'): ?>
+    <?php
+    echo '<script type="application/ld+json">'; ?>
+    {
+        "@context": "http://schema.org",
+        "@type": "Person",
+        "name": "<?php echo $block->escapeHtml($companyName); ?>",
+        "url": "<?php echo $block->escapeUrl($baseUrl); ?>",
+        "sameAs": [
+            <?php
+    foreach ($companySocial as $key => $value): ?>
+        <?php
+        if ($key == '0'): ?>"<?php
+            echo $block->escapeHtml($value); ?>"
+            <?php
+        else: ?>,"<?php
+            echo $block->escapeHtml($value); ?>"
+        <?php
+        endif; ?>
+            <?php
+    endforeach; ?>
+            ]
+        }
+    </script>
+    <?php
+endif;

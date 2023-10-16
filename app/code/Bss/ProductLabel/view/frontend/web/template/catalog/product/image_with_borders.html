@@ -1,0 +1,51 @@
+<!--
+/**
+ *
+ * BSS Commerce Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://bsscommerce.com/Bss-Commerce-License.txt
+ *
+ *  @category  BSS
+ *  @package   Bss_ProductLabel
+ *  @author    Extension Team
+ *  @copyright Copyright (c) 2017-2018 BSS Commerce Co. ( http://bsscommerce.com )
+ *  @license   http://bsscommerce.com/Bss-Commerce-License.txt
+ */
+-->
+
+<if args="isAllowed()">
+    <a if="imageExists($row())"
+       class="product-item-photo"
+       attr="href: $row().url">
+        <span class="product-image-container"
+              data-bind="style: {width: getWidth($row()) + 'px'}">
+            <span class="product-image-wrapper"
+                  data-bind="style: {'padding-bottom': getHeight($row())/getWidth($row()) * 100 + '%', position: 'relative', display: 'block'}">
+                <img class="product-image-photo"
+                     data-bind="attr: {src: getImageUrl($row()),
+                                       alt: getLabel($row())}"/>
+
+                <div data-bind="foreach: { data: $row().extension_attributes.label_data , as: 'item' } ">
+                    <div data-bind="style: {
+                        position: 'absolute',
+                        backgroundSize: 'contain', backgroundRepeat: 'no-repeat',
+                        backgroundImage: 'url(' + JSON.parse(item).image + ')',
+                        width: JSON.parse(item).width + '%',
+                        height: JSON.parse(item).height + '%',
+                        top: JSON.parse(item).top + '%',
+                        left: JSON.parse(item).left + '%',
+                        zIndex: JSON.parse(item).priority,
+                        transform: 'rotate(' + JSON.parse(item).angle + 'deg)'
+                     }">
+                    </div>
+                </div>
+
+            </span>
+        </span>
+    </a>
+</if>

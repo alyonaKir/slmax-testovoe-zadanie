@@ -1,0 +1,30 @@
+<?php
+
+?>
+<button class="scalable mst-action-button" type="button" id="<?= $block->getHtmlId() ?>" data-mage-init='{"Mirasvit_OptimizeImage/js/generate":{
+    "callbackUrl": "<?= $block->escapeUrl($block->getCallbackUrl()) ?>",
+    "elementId": "<?= $block->getHtmlId() ?>"}, "validation": {}}'>
+    <span id="<?= $block->getHtmlId() ?>_result"><?= $block->escapeHtml($block->getButtonLabel()) ?></span>
+</button>
+
+<style>
+    .mst-action-button {
+        margin: 0 25%;
+        width: 195px;
+    }
+
+    #mst_optimize_optimize_image_responsive_image tr th {
+        min-width: 100px;
+        width: 100px;
+    }
+
+    #mst_optimize_optimize_image_responsive_image tr th:first-child {
+        min-width: 200px;
+        width: auto;
+    }
+
+    #mst_optimize_optimize_image_responsive_image tr th:last-child {
+        min-width: 50px;
+        width: 50px;
+    }
+</style>

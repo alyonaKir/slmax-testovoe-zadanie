@@ -1,0 +1,42 @@
+<?xml version="1.0" ?>
+<!--
+/**
+ * BSS Commerce Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://bsscommerce.com/Bss-Commerce-License.txt
+ *
+ * @category   BSS
+ * @package    Bss_MetaTagManager
+ * @author     Extension Team
+ * @copyright  Copyright (c) 2018-2019 BSS Commerce Co. ( http://bsscommerce.com )
+ * @license    http://bsscommerce.com/Bss-Commerce-License.txt
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<update handle="editor"/>
+	<body>
+		<referenceContainer name="content">
+            <block class="Bss\MetaTagManager\Block\Adminhtml\Metatemplate\Edit" name="metatagmanager_metatemplate_edit"/>
+            <block class="Bss\MetaTagManager\Block\Adminhtml\Metatemplate\Edit\Variables" name="metatagmanager_metatemplate_edit_insert" template="Bss_MetaTagManager::metatemplate/edit/variables.phtml" />
+        </referenceContainer>
+        <referenceContainer name="left">
+            <block class="Bss\MetaTagManager\Block\Adminhtml\Metatemplate\Edit\Tabs" name="metatagmanager_metatemplate_edit_tabs">
+                <block class="Bss\MetaTagManager\Block\Adminhtml\Metatemplate\Edit\Tab\General" name="metatagmanager_metatemplate_edit_tab_general"/>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">general_section</argument>
+                    <argument name="block" xsi:type="string">metatagmanager_metatemplate_edit_tab_general</argument>
+                </action>
+                <block class="Bss\MetaTagManager\Block\Adminhtml\Metatemplate\Edit\Tab\TemplateSettings" name="metatagmanager_metatemplate_edit_tab_templatesettings"/>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">templatesettings_section</argument>
+                    <argument name="block" xsi:type="string">metatagmanager_metatemplate_edit_tab_templatesettings</argument>
+                </action>
+            </block>
+        </referenceContainer>
+	</body>
+</page>

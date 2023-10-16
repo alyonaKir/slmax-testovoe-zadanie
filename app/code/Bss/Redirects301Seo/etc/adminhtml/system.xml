@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * BSS Commerce Co.
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the EULA
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://bsscommerce.com/Bss-Commerce-License.txt
+ *
+ * @category   BSS
+ * @package    Bss_Redirects301Seo
+ * @author     Extension Team
+ * @copyright  Copyright (c) 2018-2019 BSS Commerce Co. ( http://bsscommerce.com )
+ * @license    http://bsscommerce.com/Bss-Commerce-License.txt
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="bss_seo_suite" translate="label" sortOrder="300">
+            <label><![CDATA[Bss Commerce SEO]]></label>
+        </tab>
+        <section id="bss_redirects" translate="label" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Redirects 301 SEO</label>
+            <tab>bss_seo_suite</tab>
+            <resource>Bss_Redirects301Seo::redirects</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General</label>
+                <field id="enable" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enabled</label>
+                    <comment><![CDATA[Version 1.0.5]]></comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+            <group id="redirects" translate="label" type="text" sortOrder="14" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Redirects 301 SEO</label>
+                <field id="redirects" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1" showInStore="1" >
+                    <label>Default Redirect to</label>
+                    <source_model>Bss\Redirects301Seo\Model\Config\Source\Redirects</source_model>
+                </field>
+                <field id="delete_day" translate="label comment" type="text" sortOrder="3" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Time Period (in days) to Keep Redirect on Website</label>
+                </field>
+            </group>
+            <group id="recommended_solutions" translate="label" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label><![CDATA[<a href="https://bsscommerce.com/magento-2-seo-extension.html" target="_blank" style="background: #f0f0f0; padding: 20px; border-radius: 4px">
+                    <p style="font-size: 14px;">Want a complete SEO solution? We also offer a <font color="blue">SEO Suite</font>,
+                    including all necessary modules to make your site SEO-friendly, boost ranking and increase traffic!</p></a>]]>
+                </label>
+                <fieldset_css>paypal-recommended-header bss_footer_seo</fieldset_css>
+                <frontend_model>Magento\Paypal\Block\Adminhtml\System\Config\Fieldset\Expanded</frontend_model>
+            </group>
+        </section>
+    </system>
+</config>

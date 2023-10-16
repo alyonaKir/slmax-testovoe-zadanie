@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="product.attributes" remove="true"/>
+        <referenceBlock name="product.info.description">
+        	<block class="Magento\Catalog\Block\Product\View\Attributes" name="product.attributes.custom" as="attributes_in_details" template="product/view/attributes.phtml"/>
+		    <!-- <action method="setTemplate">
+		        <argument name="template" xsi:type="string">product/view/descriptions-with-attributes.phtml</argument>
+		    </action> -->
+        </referenceBlock>
+    </body>
+</page>
